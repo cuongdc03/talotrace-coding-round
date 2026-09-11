@@ -56,6 +56,11 @@ class GeminiScriptGenerator:
     async def generate_script(self, topic: SupportedTopic, query: str) -> Optional[VideoScript]:
         """Generate a validated 30s VideoScript using Gemini LLM with structured schema output."""
         if not self._client:
+            if settings.REQUIRE_GEMINI and not self.api_key:
+                raise ValueError(
+                    "GEMINI_API_KEY is required for Gemini 3.5 Flash Lite video generation. "
+                    "Please configure GEMINI_API_KEY in your .env file or environment."
+                )
             logger.info("Gemini API key not configured. Skipping LLM script generation.")
             return None
 

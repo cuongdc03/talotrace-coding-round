@@ -35,8 +35,9 @@ uv venv --python 3.12 .venv
 source .venv/bin/activate
 uv pip install -e ".[dev]"
 
-# 3. Environment variables (Optional: Gemini LLM generation)
+# 3. Environment variables (Configure required Gemini API key)
 cp .env.example .env
+# Set GEMINI_API_KEY in .env or export GEMINI_API_KEY="your_api_key"
 
 # 4. Run tests
 uv run --python .venv pytest -v

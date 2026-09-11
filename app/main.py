@@ -50,6 +50,13 @@ async def lifespan(app: FastAPI):
 
     # Start worker tasks
     await job_worker_instance.start()
+    if settings.REQUIRE_GEMINI and not settings.GEMINI_API_KEY:
+        logger.warning("=" * 72)
+        logger.warning("ATTENTION REVIEWER: GEMINI_API_KEY is not set in .env!")
+        logger.warning("Please configure GEMINI_API_KEY to experience Gemini 3.5 Flash Lite.")
+        logger.warning("=" * 72)
+    else:
+        logger.info("Gemini 3.5 Flash Lite LLM Engine configured and active.")
     logger.info("System initialized and ready to accept requests.")
 
     yield

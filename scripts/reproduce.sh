@@ -50,6 +50,15 @@ else
     echo -e "  ${GREEN}✓${NC} Existing .env found"
 fi
 
+if [ -n "${GEMINI_API_KEY:-}" ]; then
+    echo -e "  ${GREEN}✓${NC} GEMINI_API_KEY detected in environment (Gemini 3.5 Flash Lite enabled)"
+elif grep -E "^GEMINI_API_KEY=AI" .env >/dev/null 2>&1 || grep -E "^GEMINI_API_KEY=AQ" .env >/dev/null 2>&1; then
+    echo -e "  ${GREEN}✓${NC} GEMINI_API_KEY configured in .env (Gemini 3.5 Flash Lite enabled)"
+else
+    echo -e "  ${YELLOW}[!] Note: GEMINI_API_KEY is required to generate new videos with Gemini 3.5 Flash Lite.${NC}"
+    echo -e "      Set your key in .env or export GEMINI_API_KEY=..."
+fi
+
 # 4. Run Test Suite
 echo -e "\n${BOLD}[4/4] Running Automated Test Suite (Unit, Integration, E2E)...${NC}"
 uv run --python .venv pytest -v

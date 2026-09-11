@@ -5,13 +5,25 @@ from app.pipeline.gemini_generator import GeminiScriptGenerator
 
 
 @pytest.mark.asyncio
-async def test_gemini_generator_fallback_without_key():
+async def test_gemini_generator_fallback_without_key(monkeypatch):
+    from app.core.config import settings
+
     generator = GeminiScriptGenerator(api_key="")
+
+    # With REQUIRE_GEMINI = True, raises ValueError
+    monkeypatch.setattr(settings, "REQUIRE_GEMINI", True)
+    with pytest.raises(ValueError, match="GEMINI_API_KEY is required"):
+        await generator.generate_script(
+            SupportedTopic.PH_SCALE,
+            "How does the pH scale work?",
+        )
+
+    # With REQUIRE_GEMINI = False, returns None
+    monkeypatch.setattr(settings, "REQUIRE_GEMINI", False)
     script = await generator.generate_script(
         SupportedTopic.PH_SCALE,
         "How does the pH scale work?",
     )
-    # Without key, returns None so caller falls back cleanly
     assert script is None
 
 
