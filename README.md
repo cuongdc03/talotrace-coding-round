@@ -6,6 +6,47 @@ Built as part of the **Growtrics AI Chemistry Video Request Service Challenge**.
 
 ---
 
+## ⚡ Reviewer Quickstart (1-Minute Reproduction)
+
+To reproduce the entire verification flow and run all 45 automated tests on your machine:
+
+### Option A: One-Command Reproduction Script
+```bash
+./scripts/reproduce.sh
+```
+*This verifies `ffmpeg` on PATH, sets up the virtual environment with `uv`, copies `.env.example` if needed, and executes the complete test suite (`pytest -v`).*
+
+### Option B: Using Make
+```bash
+make setup   # Sets up .venv, installs dependencies, and creates .env
+make test    # Runs all 45 unit, integration, and E2E tests
+make run     # Starts the FastAPI server on http://localhost:8000
+make demo    # Requests, polls, and downloads videos via the live REST API
+```
+
+### Option C: Manual Setup with `uv`
+```bash
+# 1. Prerequisites: ffmpeg & uv
+# macOS: brew install ffmpeg uv
+# Linux: sudo apt-get install -y ffmpeg && curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 2. Virtual environment and dependencies
+uv venv --python 3.12 .venv
+source .venv/bin/activate
+uv pip install -e ".[dev]"
+
+# 3. Environment variables (Optional: Gemini LLM generation)
+cp .env.example .env
+
+# 4. Run tests
+uv run --python .venv pytest -v
+
+# 5. Launch FastAPI backend
+uv run --python .venv uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+---
+
 ## 🌟 Key Capabilities
 
 1. **Async Video Generation Flow**:
