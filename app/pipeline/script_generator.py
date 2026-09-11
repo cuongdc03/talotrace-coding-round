@@ -19,9 +19,15 @@ class ScriptGenerator:
         self,
         max_retries: int = 1,
         gemini_generator: Optional[GeminiScriptGenerator] = None,
+        use_gemini: bool = True,
     ) -> None:
         self.max_retries = max_retries
-        self.gemini_generator = gemini_generator or GeminiScriptGenerator()
+        if not use_gemini:
+            self.gemini_generator = None
+        else:
+            self.gemini_generator = (
+                gemini_generator if gemini_generator is not None else GeminiScriptGenerator()
+            )
 
     async def generate(
         self,

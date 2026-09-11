@@ -22,6 +22,15 @@ class ConceptClassifier:
                 ],
             ),
             (
+                SupportedTopic.ACID_BASE_NEUTRALIZATION,
+                [
+                    re.compile(r"neutraliz(ation|e)", re.IGNORECASE),
+                    re.compile(r"titration", re.IGNORECASE),
+                    re.compile(r"acid.*base.*(reaction|combine)", re.IGNORECASE),
+                    re.compile(r"h\+\s*\+\s*oh\-", re.IGNORECASE),
+                ],
+            ),
+            (
                 SupportedTopic.PH_SCALE,
                 [
                     re.compile(r"\bph\b", re.IGNORECASE),
@@ -37,6 +46,47 @@ class ConceptClassifier:
                     re.compile(r"share.*electron", re.IGNORECASE),
                     re.compile(r"electron.*shar(ing|e)", re.IGNORECASE),
                     re.compile(r"why.*atoms.*form.*bond", re.IGNORECASE),
+                ],
+            ),
+            (
+                SupportedTopic.ATOMIC_STRUCTURE,
+                [
+                    re.compile(r"atomic\s+structure", re.IGNORECASE),
+                    re.compile(r"structure\s+of\s+(an\s+)?atom", re.IGNORECASE),
+                    re.compile(r"subatomic(\s+particles)?", re.IGNORECASE),
+                    re.compile(r"electron\s+shell", re.IGNORECASE),
+                    re.compile(r"bohr(\s+model)?", re.IGNORECASE),
+                    re.compile(r"protons?.*neutrons?", re.IGNORECASE),
+                ],
+            ),
+            (
+                SupportedTopic.EXO_VS_ENDOTHERMIC,
+                [
+                    re.compile(r"exothermic", re.IGNORECASE),
+                    re.compile(r"endothermic", re.IGNORECASE),
+                    re.compile(r"activation\s+energy", re.IGNORECASE),
+                    re.compile(r"energy\s+profile", re.IGNORECASE),
+                    re.compile(r"heat\s+of\s+reaction", re.IGNORECASE),
+                ],
+            ),
+            (
+                SupportedTopic.PERIODIC_TRENDS,
+                [
+                    re.compile(r"periodic\s+table", re.IGNORECASE),
+                    re.compile(r"periodic\s+trend", re.IGNORECASE),
+                    re.compile(r"electronegativity", re.IGNORECASE),
+                    re.compile(r"atomic\s+radius", re.IGNORECASE),
+                    re.compile(r"ionization\s+energy", re.IGNORECASE),
+                ],
+            ),
+            (
+                SupportedTopic.STATES_OF_MATTER,
+                [
+                    re.compile(r"states?\s+of\s+matter", re.IGNORECASE),
+                    re.compile(r"phase\s+transition", re.IGNORECASE),
+                    re.compile(r"phase\s+change", re.IGNORECASE),
+                    re.compile(r"solid.*liquid.*gas", re.IGNORECASE),
+                    re.compile(r"melting.*boiling", re.IGNORECASE),
                 ],
             ),
         ]
