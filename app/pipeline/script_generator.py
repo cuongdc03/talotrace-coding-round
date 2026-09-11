@@ -6,6 +6,7 @@ from typing import Any, Callable, Optional, Tuple
 from pydantic import ValidationError
 
 from app.models.script import SupportedTopic, VideoScript
+from app.pipeline.gemini_generator import GeminiScriptGenerator
 from app.pipeline.templates import get_template_script
 
 logger = logging.getLogger(__name__)
@@ -14,8 +15,13 @@ logger = logging.getLogger(__name__)
 class ScriptGenerator:
     """Generates and validates educational scripts, handling non-determinism with schema guardrails."""
 
-    def __init__(self, max_retries: int = 1) -> None:
+    def __init__(
+        self,
+        max_retries: int = 1,
+        gemini_generator: Optional[GeminiScriptGenerator] = None,
+    ) -> None:
         self.max_retries = max_retries
+        self.gemini_generator = gemini_generator or GeminiScriptGenerator()
 
     async def generate(
         self,
@@ -26,15 +32,26 @@ class ScriptGenerator:
         """
         Generate a validated VideoScript.
         If llm_provider is provided, calls it with quality checks and retry.
-        If no provider is supplied or if validation fails repeatedly, seamlessly
+        Otherwise, attempts Gemini LLM generation if configured.
+        If no provider is supplied or if generation fails, seamlessly
         activates the curated deterministic fallback template.
         Returns: (validated_script, fallback_used: bool)
         """
+        if llm_provider is None and self.gemini_generator:
+            try:
+                gemini_script = await self.gemini_generator.generate_script(topic=topic, query=query)
+                if gemini_script:
+                    logger.info("Successfully generated script via Gemini LLM for %s", topic)
+                    return gemini_script, False
+            except Exception as exc:
+                logger.warning("Gemini script generation attempt failed: %s", exc)
+
         if llm_provider is None:
             logger.info(
-                "No LLM provider configured; using curated high-fidelity template for %s", topic
+                "No LLM provider available or succeeded; using curated high-fidelity template for %s",
+                topic,
             )
-            return get_template_script(topic), False
+            return get_template_script(topic), True
 
         # Attempt LLM generation with retry on schema failure
         for attempt in range(self.max_retries + 1):

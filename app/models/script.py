@@ -12,6 +12,11 @@ class SupportedTopic(str, Enum):
     PH_SCALE = "PH_SCALE"
     COVALENT_BONDS = "COVALENT_BONDS"
     IONIC_VS_COVALENT = "IONIC_VS_COVALENT"
+    ATOMIC_STRUCTURE = "ATOMIC_STRUCTURE"
+    EXO_VS_ENDOTHERMIC = "EXO_VS_ENDOTHERMIC"
+    PERIODIC_TRENDS = "PERIODIC_TRENDS"
+    STATES_OF_MATTER = "STATES_OF_MATTER"
+    ACID_BASE_NEUTRALIZATION = "ACID_BASE_NEUTRALIZATION"
     OTHER_STEM = "OTHER_STEM"
 
 
@@ -21,13 +26,16 @@ class Scene(BaseModel):
     scene_id: int = Field(..., ge=1, description="Sequential scene index (1-based)")
     title: str = Field(..., min_length=2, max_length=100, description="Scene title header")
     narration: str = Field(
-        ..., min_length=10, max_length=500, description="Spoken voiceover narration"
+        ..., min_length=10, max_length=800, description="Spoken voiceover narration"
     )
     visual_type: str = Field(
         ..., min_length=3, max_length=50, description="Visual scene template identifier"
     )
     key_takeaway: str = Field(
-        ..., min_length=3, max_length=150, description="On-screen bullet / takeaway"
+        ..., min_length=3, max_length=200, description="On-screen bullet / takeaway"
+    )
+    latex_formula: Optional[str] = Field(
+        default=None, description="LaTeX mathematical or chemical notation for on-screen callout"
     )
     duration_target_seconds: Optional[float] = Field(default=5.0, ge=1.0, le=60.0)
 
@@ -36,9 +44,9 @@ class VideoScript(BaseModel):
     """Validated multi-scene storyboard script for video generation."""
 
     topic: SupportedTopic = Field(..., description="Canonical topic category")
-    title: str = Field(..., min_length=5, max_length=120, description="Overall video title")
+    title: str = Field(..., min_length=5, max_length=150, description="Overall video title")
     overview: str = Field(
-        ..., min_length=10, max_length=300, description="Brief educational summary"
+        ..., min_length=10, max_length=800, description="Brief educational summary"
     )
     scenes: List[Scene] = Field(
         ..., min_length=2, max_length=10, description="Ordered list of scenes"
