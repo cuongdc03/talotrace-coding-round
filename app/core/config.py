@@ -26,7 +26,11 @@ class Settings(BaseSettings):
     VIDEOS_DIR: Path = ARTIFACTS_DIR / "videos"
     AUDIO_DIR: Path = ARTIFACTS_DIR / "audio"
     FRAMES_DIR: Path = ARTIFACTS_DIR / "frames"
+    TMP_DIR: Path = ARTIFACTS_DIR / "tmp"
     DATABASE_PATH: Path = BASE_DIR / "video_service.sqlite3"
+
+    # LLM & Generation
+    GEMINI_API_KEY: str | None = None
 
     # Audio & Video Engine Defaults
     TTS_VOICE: str = "en-US-GuyNeural"
@@ -44,6 +48,7 @@ class Settings(BaseSettings):
         self.VIDEOS_DIR.mkdir(parents=True, exist_ok=True)
         self.AUDIO_DIR.mkdir(parents=True, exist_ok=True)
         self.FRAMES_DIR.mkdir(parents=True, exist_ok=True)
+        self.TMP_DIR.mkdir(parents=True, exist_ok=True)
 
 
 settings = Settings()
