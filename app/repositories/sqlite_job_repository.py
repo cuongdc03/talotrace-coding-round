@@ -1,9 +1,12 @@
 """Asynchronous SQLite implementation of the JobRepository."""
+
 import json
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
+
 import aiosqlite
+
 from app.models.job import Job, JobStatus
 from app.repositories.base import JobRepository
 
@@ -38,7 +41,9 @@ class SQLiteJobRepository(JobRepository):
                 """
             )
             await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_status ON jobs(status)")
-            await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_created_at ON jobs(created_at DESC)")
+            await db.execute(
+                "CREATE INDEX IF NOT EXISTS idx_jobs_created_at ON jobs(created_at DESC)"
+            )
             await db.commit()
 
     def _row_to_job(self, row: aiosqlite.Row) -> Job:
@@ -56,7 +61,9 @@ class SQLiteJobRepository(JobRepository):
             metadata=json.loads(row["metadata_json"] or "{}"),
             created_at=datetime.fromisoformat(row["created_at"]),
             updated_at=datetime.fromisoformat(row["updated_at"]),
-            completed_at=datetime.fromisoformat(row["completed_at"]) if row["completed_at"] else None,
+            completed_at=datetime.fromisoformat(row["completed_at"])
+            if row["completed_at"]
+            else None,
         )
 
     async def create(self, job: Job) -> Job:

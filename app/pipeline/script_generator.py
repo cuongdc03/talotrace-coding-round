@@ -1,7 +1,10 @@
 """Script generator with Pydantic guardrails and deterministic fallback."""
+
 import logging
-from typing import Any, Callable, Dict, Optional, Tuple
+from typing import Any, Callable, Optional, Tuple
+
 from pydantic import ValidationError
+
 from app.models.script import SupportedTopic, VideoScript
 from app.pipeline.templates import get_template_script
 
@@ -28,7 +31,9 @@ class ScriptGenerator:
         Returns: (validated_script, fallback_used: bool)
         """
         if llm_provider is None:
-            logger.info("No LLM provider configured; using curated high-fidelity template for %s", topic)
+            logger.info(
+                "No LLM provider configured; using curated high-fidelity template for %s", topic
+            )
             return get_template_script(topic), False
 
         # Attempt LLM generation with retry on schema failure
@@ -48,7 +53,9 @@ class ScriptGenerator:
 
                 for scene in script.scenes:
                     if len(scene.narration.strip()) < 10:
-                        raise ValueError(f"Quality gate failed: scene {scene.scene_id} narration too short")
+                        raise ValueError(
+                            f"Quality gate failed: scene {scene.scene_id} narration too short"
+                        )
 
                 logger.info("Successfully validated LLM-generated script for %s", topic)
                 return script, False

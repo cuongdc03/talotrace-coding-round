@@ -1,12 +1,15 @@
 """Job domain models and schema definitions."""
+
 from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Dict, List, Optional
+
 from pydantic import BaseModel, Field
 
 
 class JobStatus(str, Enum):
     """Lifecycle status states for video generation jobs."""
+
     PENDING = "PENDING"
     VALIDATING = "VALIDATING"
     GENERATING_SCRIPT = "GENERATING_SCRIPT"
@@ -19,6 +22,7 @@ class JobStatus(str, Enum):
 
 class Job(BaseModel):
     """Domain model representing a video generation request and lifecycle state."""
+
     id: str
     query: str
     topic: str
@@ -36,11 +40,13 @@ class Job(BaseModel):
 
 class JobCreateRequest(BaseModel):
     """HTTP request payload for requesting a new concept explanation video."""
+
     query: str = Field(..., min_length=3, max_length=500, description="Learner chemistry query")
 
 
 class JobResponse(BaseModel):
     """Detailed job state response model."""
+
     id: str
     query: str
     topic: str
@@ -58,6 +64,7 @@ class JobResponse(BaseModel):
 
 class JobListResponse(BaseModel):
     """Paginated list of jobs response model."""
+
     total: int
     limit: int
     offset: int

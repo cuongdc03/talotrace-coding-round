@@ -1,5 +1,7 @@
 """Curated pedagogical script templates for high-fidelity fallback generation."""
+
 from typing import Dict
+
 from app.models.script import Scene, SupportedTopic, VideoScript
 
 TEMPLATES: Dict[SupportedTopic, VideoScript] = {

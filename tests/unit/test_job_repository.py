@@ -1,6 +1,7 @@
 """Unit tests for asynchronous SQLite job repository."""
+
 import pytest
-from datetime import datetime
+
 from app.models.job import Job, JobStatus
 from app.repositories.sqlite_job_repository import SQLiteJobRepository
 

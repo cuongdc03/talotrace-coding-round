@@ -1,9 +1,9 @@
 """Unit tests for script generator and schema guardrails."""
+
 import pytest
-from pydantic import ValidationError
+
 from app.models.script import SupportedTopic, VideoScript
 from app.pipeline.script_generator import ScriptGenerator
-from app.pipeline.templates import get_template_script
 
 
 @pytest.mark.asyncio
@@ -39,6 +39,7 @@ async def test_generate_script_all_required_topics():
 @pytest.mark.asyncio
 async def test_script_guardrail_rejection_and_fallback():
     generator = ScriptGenerator()
+
     # Mock LLM returning invalid schema
     async def bad_llm_provider(*args, **kwargs):
         return {"invalid": "not conforming to VideoScript"}

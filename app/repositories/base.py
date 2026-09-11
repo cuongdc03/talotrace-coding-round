@@ -1,6 +1,8 @@
 """Abstract base repository for job persistence."""
+
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional, Tuple
+
 from app.models.job import Job, JobStatus
 
 

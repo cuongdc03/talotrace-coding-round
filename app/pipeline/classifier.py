@@ -1,6 +1,8 @@
 """Concept classifier for learner queries."""
+
 import re
-from typing import Dict, List
+from typing import List
+
 from app.models.script import SupportedTopic
 
 
