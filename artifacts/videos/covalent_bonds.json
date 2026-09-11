@@ -1,0 +1,44 @@
+{
+  "query": "Why do atoms form covalent bonds?",
+  "topic": "COVALENT_BONDS",
+  "title": "Why Atoms Form Covalent Bonds",
+  "overview": "Understand how nonmetal atoms achieve electronic stability by sharing valence electron pairs to complete their outer shells.",
+  "duration_seconds": 35.874667,
+  "video_path": "artifacts/videos/covalent_bonds.mp4",
+  "file_size_bytes": 902613,
+  "fallback_used": false,
+  "scenes": [
+    {
+      "scene_id": 1,
+      "title": "The Quest for Stability",
+      "narration": "Atoms form chemical bonds to achieve electron stability. Most atoms are most stable when their outermost valence shell is completely full of electrons, following the octet rule.",
+      "visual_type": "covalent_octet",
+      "key_takeaway": "Atoms seek full valence electron shells for maximum stability.",
+      "duration_target_seconds": 6.5
+    },
+    {
+      "scene_id": 2,
+      "title": "Sharing Electron Pairs",
+      "narration": "When nonmetal atoms meet, neither has enough electronegativity to completely strip electrons from the other. Instead, their outer electron orbitals overlap, and they share pairs of electrons.",
+      "visual_type": "covalent_sharing",
+      "key_takeaway": "Covalent bonds form when overlapping atoms share valence electron pairs.",
+      "duration_target_seconds": 7.5
+    },
+    {
+      "scene_id": 3,
+      "title": "The Molecular Glue",
+      "narration": "The shared negatively charged electrons are simultaneously attracted to the positively charged nuclei of both atoms. This electrostatic attraction holds the atoms tightly together into a molecule.",
+      "visual_type": "covalent_molecule",
+      "key_takeaway": "Electrostatic attraction between positive nuclei and shared electrons binds the molecule.",
+      "duration_target_seconds": 7.5
+    }
+  ],
+  "verification": {
+    "is_valid": true,
+    "duration": 35.874667,
+    "size_bytes": 902613,
+    "has_video": true,
+    "has_audio": true,
+    "format": "mov,mp4,m4a,3gp,3g2,mj2"
+  }
+}

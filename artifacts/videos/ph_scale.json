@@ -1,0 +1,44 @@
+{
+  "query": "How does the pH scale work?",
+  "topic": "PH_SCALE",
+  "title": "How the pH Scale Works: Acids, Bases, and Ions",
+  "overview": "Explore the pH scale from 0 to 14, discovering how hydrogen ion concentration determines whether a substance is acidic, neutral, or alkaline.",
+  "duration_seconds": 34.354062,
+  "video_path": "artifacts/videos/ph_scale.mp4",
+  "file_size_bytes": 863438,
+  "fallback_used": false,
+  "scenes": [
+    {
+      "scene_id": 1,
+      "title": "The 0 to 14 Spectrum",
+      "narration": "The pH scale measures how acidic or basic a liquid is, running on a spectrum from 0 all the way to 14. A pH of 7 represents pure neutral water.",
+      "visual_type": "ph_spectrum",
+      "key_takeaway": "pH ranges from 0 (strong acid) to 14 (strong base), with 7 as neutral.",
+      "duration_target_seconds": 6.0
+    },
+    {
+      "scene_id": 2,
+      "title": "Acids vs Bases: The Ion Balance",
+      "narration": "Acids, like lemon juice or stomach acid, have a pH below 7 and are packed with excess hydrogen ions. Bases, like soap and bleach, have a pH above 7 with excess hydroxide ions.",
+      "visual_type": "ph_ions",
+      "key_takeaway": "Acids release H+ ions (pH < 7); Bases release OH- ions (pH > 7).",
+      "duration_target_seconds": 7.0
+    },
+    {
+      "scene_id": 3,
+      "title": "The Logarithmic Nature of pH",
+      "narration": "Crucially, the pH scale is logarithmic. Each whole unit change represents a ten-fold difference in acidity. A pH of 5 is ten times more acidic than a pH of 6, and a hundred times more acidic than 7!",
+      "visual_type": "ph_logarithmic",
+      "key_takeaway": "Each step on the pH scale represents a 10x change in ion concentration.",
+      "duration_target_seconds": 8.0
+    }
+  ],
+  "verification": {
+    "is_valid": true,
+    "duration": 34.354062,
+    "size_bytes": 863438,
+    "has_video": true,
+    "has_audio": true,
+    "format": "mov,mp4,m4a,3gp,3g2,mj2"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "query": "What is the difference between ionic and covalent bonding?",
+  "topic": "IONIC_VS_COVALENT",
+  "title": "Ionic vs Covalent Bonding: The Essential Differences",
+  "overview": "Compare the two fundamental chemical bonding mechanisms: electron transfer forming ionic crystal lattices versus electron sharing forming covalent molecules.",
+  "duration_seconds": 46.378667,
+  "video_path": "artifacts/videos/ionic_vs_covalent.mp4",
+  "file_size_bytes": 1292423,
+  "fallback_used": false,
+  "scenes": [
+    {
+      "scene_id": 1,
+      "title": "Two Ways to Bond",
+      "narration": "To achieve stable outer electron shells, atoms either transfer electrons completely or share them mutually. This fundamental choice defines ionic versus covalent bonding.",
+      "visual_type": "bonding_overview",
+      "key_takeaway": "Atoms form chemical bonds either through electron transfer or electron sharing.",
+      "duration_target_seconds": 6.0
+    },
+    {
+      "scene_id": 2,
+      "title": "Ionic Bonding: Complete Transfer",
+      "narration": "Ionic bonding occurs between metals and nonmetals. For example, sodium transfers an electron to chlorine, creating oppositely charged ions that attract into a rigid crystal lattice.",
+      "visual_type": "ionic_transfer",
+      "key_takeaway": "Ionic: Metal transfers electron to nonmetal, creating oppositely charged ions in a lattice.",
+      "duration_target_seconds": 7.5
+    },
+    {
+      "scene_id": 3,
+      "title": "Covalent Bonding: Mutual Sharing",
+      "narration": "In contrast, covalent bonding occurs between nonmetals, such as hydrogen and oxygen in water. Here, electrons are shared within discrete molecules rather than continuous crystal networks.",
+      "visual_type": "covalent_molecular",
+      "key_takeaway": "Covalent: Nonmetals share electron pairs, forming distinct molecular compounds.",
+      "duration_target_seconds": 7.5
+    },
+    {
+      "scene_id": 4,
+      "title": "Key Physical Properties",
+      "narration": "Because ionic bonds form rigid electrostatic lattices, they have high melting points. Covalent molecular compounds have lower melting points and distinct chemical geometry.",
+      "visual_type": "comparison_table",
+      "key_takeaway": "Ionic compounds form crystalline solids; covalent compounds form flexible molecular structures.",
+      "duration_target_seconds": 7.0
+    }
+  ],
+  "verification": {
+    "is_valid": true,
+    "duration": 46.378667,
+    "size_bytes": 1292423,
+    "has_video": true,
+    "has_audio": true,
+    "format": "mov,mp4,m4a,3gp,3g2,mj2"
+  }
+}

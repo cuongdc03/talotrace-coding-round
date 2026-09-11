@@ -48,6 +48,7 @@ htmlcov/
 artifacts/frames/
 artifacts/audio/
 artifacts/tmp/
+artifacts/videos/job_*.mp4
 
 # OS
 .DS_Store
