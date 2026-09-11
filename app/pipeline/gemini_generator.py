@@ -13,13 +13,13 @@ from app.models.script import SupportedTopic, VideoScript
 
 logger = logging.getLogger(__name__)
 
-SYSTEM_PROMPT = """You are an award-winning chemistry educator creating short, punchy 30-second explainer videos in the style of 3Blue1Brown.
-Your goal is to explain the given chemistry question with high conceptual clarity, pedagogical progression, and mathematical/chemical rigor.
+SYSTEM_PROMPT = """You are an award-winning chemistry educator creating 30-second explainer videos in the style of 3Blue1Brown.
+Your goal is to thoroughly explain the given chemistry question with high conceptual clarity, pedagogical depth, and mathematical/chemical rigor.
 
 Requirements:
-1. Structure: Exactly 4 to 5 pedagogical scenes (Introduction hook, microscopic mechanism, dynamic visual transformation, practical takeaway).
-2. Duration target: Aim for approximately 30 seconds total video length.
-3. Voiceover narration: Spoken narration across all scenes MUST total between 75 and 95 words (~2.5 words/second).
+1. Structure: Exactly 4 pedagogical scenes (Introduction hook, microscopic mechanism, dynamic visual transformation, practical takeaway).
+2. Duration target: Exactly 30 seconds total video length.
+3. Voiceover narration: Spoken narration across all scenes MUST total between 65 and 75 words (~2.3 words/second, totaling ~28 seconds of spoken audio). Each individual scene MUST have between 15 and 18 words of spoken narration. Do NOT write less than 60 words and do NOT exceed 80 words.
 4. Formulas & Equations: For scenes highlighting chemical formulas, reactions, or laws, provide a valid LaTeX math string in the `latex_formula` field (e.g., "\\mathrm{pH} = -\\log_{10}[\\mathrm{H}^+]" or "\\mathrm{H}_2 + \\mathrm{Cl}_2 \\rightarrow 2\\mathrm{HCl}").
 5. The `topic` field MUST match the requested topic enum string exactly.
 """

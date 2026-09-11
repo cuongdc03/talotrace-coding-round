@@ -12,23 +12,19 @@ Built as part of the **Growtrics AI Chemistry Video Request Service Challenge**.
    - Immediate `202 Accepted` response with unique job ID.
    - Observable lifecycle state machine:
      `PENDING` $\to$ `VALIDATING` $\to$ `GENERATING_SCRIPT` $\to$ `SYNTHESIZING_AUDIO` $\to$ `RENDERING_VIDEO` $\to$ `VERIFYING_ARTIFACT` $\to$ `COMPLETED` (or `FAILED` with diagnostics).
-2. **Reliability Under Non-Determinism**:
-   - Treats non-determinism as an engineering challenge.
-   - Strict Pydantic schema validation (`VideoScript`, `Scene`).
-   - Automatic retry with temperature tightening on schema failure.
-   - Seamless fallback to curated pedagogical script templates guaranteeing 100% reliable generation across repeated runs.
-3. **High-Fidelity Chemistry Visual Compositor**:
-   - Generates crisp 1080p ($1920 \times 1080$) scientific visual cards tailored for target concepts:
-     - **pH Scale**: 14-stop gradient scale, $[H^+]$ vs $[OH^-]$ markers, common chemical indicators (battery acid, lemon, water, bleach).
-     - **Covalent Bonds**: Dual-atom orbital overlaps, Bohr valence shells, glowing shared electron pairs.
-     - **Ionic vs Covalent**: Side-by-side comparison of $Na \to Cl$ electron transfer & crystal lattice vs $H_2O$ molecular bonding.
-4. **Synchronized Audio Narration**:
-   - Natural voiceover synthesized via `edge-tts` (with macOS `say` and FFmpeg synthetic fallbacks).
-   - Dynamically calculates exact scene durations via `ffprobe` to eliminate desync or truncated audio.
-5. **Clean Architecture & Cost-Conscious Boundaries**:
+2. **Google Gemini LLM & Pydantic Guardrails**:
+   - Integrated with Google Gemini 2.5 Flash (`google-genai`) to generate structured 4-scene chemistry explainer storyboards with embedded LaTeX chemical equations and formulas.
+   - Schema validation guardrails with deterministic fallbacks guarantee 100% reliability across repeated runs.
+3. **Manim 3Blue1Brown Mathematical Animations**:
+   - Vector animations rendered with Manim for high conceptual clarity:
+     - Orbital electron motions, Bohr quantized electron shells, dynamic ionic transfers, activation energy profiles, and periodic trend vectors.
+4. **Zero-Dependency LaTeX Equation Renderer**:
+   - Renders LaTeX chemical formulas and math equations ($0 \le \mathrm{pH} \le 14$, $\mathrm{pH} = -\log_{10}[\mathrm{H}^+]$, $\Delta H < 0$, etc.) into crisp transparent PNGs via `matplotlib.mathtext`, completely bypassing heavy system TeX distribution dependencies (`texlive`/`dvisvgm`).
+5. **Synchronized ~30-Second Explainer Pacing**:
+   - Carefully calibrated audio narration and Manim animation choreographies ensure every explainer video runs ~29–31 seconds with zero clipped speech or truncated animations.
+6. **Clean Architecture & Cost-Conscious Boundaries**:
    - Decoupled REST routes (`app/api/`), business orchestration (`app/services/`), persistence (`app/repositories/`), and generation pipeline (`app/pipeline/`).
    - In-database state persistence using async SQLite (`aiosqlite`).
-   - Default generation cost is **$0.00/video** locally (or **~$0.002 - $0.05** with external LLM/TTS).
 
 ---
 
@@ -220,17 +216,24 @@ uv run --python .venv ruff format --check .
 
 ---
 
-## 🎬 Required Chemistry Concepts & Committed Sample Videos
+## 🎬 8 Chemistry Explainer Videos (~30s Each) Generated via FastAPI
 
-The repository includes pre-generated, verified 1080p MP4 videos for the 3 required queries in `artifacts/videos/`:
+The repository includes pre-generated, verified MP4 explainer videos with LaTeX formulas and 3Blue1Brown-style Manim animations for all 8 concepts in `artifacts/videos/`:
 
-| Concept | Input Learner Query | Artifact File | Duration | Resolution |
-| :--- | :--- | :--- | :--- | :--- |
-| **pH Scale** | *"How does the pH scale work?"* | [`artifacts/videos/ph_scale.mp4`](artifacts/videos/ph_scale.mp4) | ~34.35s | 1080p (1920x1080) |
-| **Covalent Bonds** | *"Why do atoms form covalent bonds?"* | [`artifacts/videos/covalent_bonds.mp4`](artifacts/videos/covalent_bonds.mp4) | ~35.87s | 1080p (1920x1080) |
-| **Ionic vs Covalent** | *"What is the difference between ionic and covalent bonding?"* | [`artifacts/videos/ionic_vs_covalent.mp4`](artifacts/videos/ionic_vs_covalent.mp4) | ~46.38s | 1080p (1920x1080) |
+| Concept | Input Learner Query | Artifact File | Duration | Resolution | Size | Engine |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **pH Scale** | *"How does the pH scale work?"* | [`artifacts/videos/ph_scale.mp4`](artifacts/videos/ph_scale.mp4) | 29.04s | 720p (1280x720) | 0.91 MB | Manim + LaTeX |
+| **Covalent Bonds** | *"Why do atoms form covalent bonds?"* | [`artifacts/videos/covalent_bonds.mp4`](artifacts/videos/covalent_bonds.mp4) | 29.08s | 720p (1280x720) | 0.93 MB | Manim + LaTeX |
+| **Ionic vs Covalent** | *"What is the difference between ionic and covalent bonding?"* | [`artifacts/videos/ionic_vs_covalent.mp4`](artifacts/videos/ionic_vs_covalent.mp4) | 29.00s | 720p (1280x720) | 0.88 MB | Manim + LaTeX |
+| **Atomic Structure** | *"What is the structure of an atom and its subatomic particles?"* | [`artifacts/videos/atomic_structure.mp4`](artifacts/videos/atomic_structure.mp4) | 29.00s | 720p (1280x720) | 0.77 MB | Manim + LaTeX |
+| **Exo vs Endothermic** | *"How do exothermic and endothermic reactions differ?"* | [`artifacts/videos/exo_vs_endothermic.mp4`](artifacts/videos/exo_vs_endothermic.mp4) | 29.00s | 720p (1280x720) | 0.78 MB | Manim + LaTeX |
+| **Periodic Trends** | *"How does the periodic table organize chemical elements?"* | [`artifacts/videos/periodic_trends.mp4`](artifacts/videos/periodic_trends.mp4) | 31.50s | 720p (1280x720) | 0.81 MB | Manim + LaTeX |
+| **States of Matter** | *"What are the states of matter and phase transitions?"* | [`artifacts/videos/states_of_matter.mp4`](artifacts/videos/states_of_matter.mp4) | 29.00s | 720p (1280x720) | 0.77 MB | Manim + LaTeX |
+| **Neutralization** | *"What happens during an acid-base neutralization reaction?"* | [`artifacts/videos/acid_base_neutralization.mp4`](artifacts/videos/acid_base_neutralization.mp4) | 29.50s | 720p (1280x720) | 0.80 MB | Manim + LaTeX |
 
-To re-generate all sample videos from scratch:
+### Request & Generate All 8 Videos via the FastAPI Service
+With the FastAPI server running (`uv run --python .venv uvicorn app.main:app --port 8000`):
 ```bash
-uv run --python .venv python scripts/generate_sample_videos.py
+# Automated client that creates jobs via POST /api/v1/videos/jobs, polls progress, and streams the videos:
+uv run --python .venv python -m scripts.generate_via_api
 ```

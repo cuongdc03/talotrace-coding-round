@@ -1,0 +1,56 @@
+{
+  "job_id": "job_c5cf285e864e",
+  "query": "How does the periodic table organize chemical elements?",
+  "topic": "PERIODIC_TRENDS",
+  "title": "How the Periodic Table Organizes Elements and Periodic Trends",
+  "duration_seconds": 31.5,
+  "file_size_bytes": 844898,
+  "video_path": "artifacts/videos/periodic_trends.mp4",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "title": "The Map of the Elements",
+      "narration": "The periodic table organizes all chemical elements by atomic number into distinct periods and groups.",
+      "visual_type": "periodic_intro",
+      "key_takeaway": "Elements are organized by atomic number into periods (rows) and groups (columns).",
+      "latex_formula": "Z = \\text{Number of Protons}",
+      "duration_target_seconds": 7.5
+    },
+    {
+      "scene_id": 2,
+      "title": "Electronegativity: The Pull for Electrons",
+      "narration": "Electronegativity, the pull for shared electrons, increases across periods and decreases down each group.",
+      "visual_type": "electronegativity_trend",
+      "key_takeaway": "Electronegativity increases across periods and decreases down groups.",
+      "latex_formula": "\\chi_{\\mathrm{F}} = 3.98 \\quad (\\text{Most Electronegative})",
+      "duration_target_seconds": 8.0
+    },
+    {
+      "scene_id": 3,
+      "title": "Atomic Radius: The Size Gradient",
+      "narration": "Conversely, atomic radius shrinks across periods due to nuclear pull, but expands down groups with new shells.",
+      "visual_type": "atomic_radius_trend",
+      "key_takeaway": "Atomic radius decreases left-to-right and increases top-to-bottom.",
+      "latex_formula": "r_{\\mathrm{atom}} \\propto \\frac{n^2}{Z_{\\mathrm{eff}}}",
+      "duration_target_seconds": 8.0
+    },
+    {
+      "scene_id": 4,
+      "title": "Predicting Chemical Reactivity",
+      "narration": "These predictable periodic trends allow chemists to accurately forecast how any element bonds and reacts.",
+      "visual_type": "periodic_summary",
+      "key_takeaway": "Periodic trends provide predictive power for all chemical interactions.",
+      "latex_formula": "\\text{Position on Table} \\implies \\text{Reactivity \\& Bonding}",
+      "duration_target_seconds": 7.5
+    }
+  ],
+  "verification": {
+    "is_valid": true,
+    "duration": 31.5,
+    "size_bytes": 844898,
+    "has_video": true,
+    "has_audio": true,
+    "format": "mov,mp4,m4a,3gp,3g2,mj2"
+  },
+  "engine_used": "manim"
+}

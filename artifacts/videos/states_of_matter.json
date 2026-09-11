@@ -1,0 +1,56 @@
+{
+  "job_id": "job_3d81819554c3",
+  "query": "What are the states of matter and phase transitions?",
+  "topic": "STATES_OF_MATTER",
+  "title": "States of Matter and Phase Transitions",
+  "duration_seconds": 29.0,
+  "file_size_bytes": 803052,
+  "video_path": "artifacts/videos/states_of_matter.mp4",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "title": "The Kinetic Nature of Matter",
+      "narration": "Matter exists in three primary physical states: solid, liquid, and gas, governed by molecular kinetic energy.",
+      "visual_type": "matter_intro",
+      "key_takeaway": "Matter exists as solid, liquid, or gas depending on molecular kinetic energy.",
+      "latex_formula": "\\overline{E_k} = \\frac{3}{2} k_B T",
+      "duration_target_seconds": 7.5
+    },
+    {
+      "scene_id": 2,
+      "title": "Solid Lattice to Fluid Liquid",
+      "narration": "In solids, particles vibrate in rigid lattices; adding thermal energy melts them into fluid liquids.",
+      "visual_type": "solid_liquid_phase",
+      "key_takeaway": "Adding heat breaks rigid crystal bonds, transitioning solids to liquids.",
+      "latex_formula": "\\mathrm{Solid} + \\Delta H_{\\mathrm{fusion}} \\rightarrow \\mathrm{Liquid}",
+      "duration_target_seconds": 8.0
+    },
+    {
+      "scene_id": 3,
+      "title": "Vaporization to High-Velocity Gas",
+      "narration": "Further heating vaporizes liquid into high-speed gas particles that move freely and collide chaotically.",
+      "visual_type": "liquid_gas_phase",
+      "key_takeaway": "Vaporization frees molecules into high-speed, chaotic gas collisions.",
+      "latex_formula": "\\mathrm{Liquid} + \\Delta H_{\\mathrm{vap}} \\rightarrow \\mathrm{Gas}",
+      "duration_target_seconds": 8.0
+    },
+    {
+      "scene_id": 4,
+      "title": "Phase Equilibrium and Conservation",
+      "narration": "Throughout every phase transition, chemical identity is conserved as temperature alters only intermolecular kinetic organization.",
+      "visual_type": "matter_summary",
+      "key_takeaway": "Phase changes alter physical organization while chemical identity remains conserved.",
+      "latex_formula": "\\mathrm{H}_2\\mathrm{O(s)} \\rightleftharpoons \\mathrm{H}_2\\mathrm{O(l)} \\rightleftharpoons \\mathrm{H}_2\\mathrm{O(g)}",
+      "duration_target_seconds": 7.5
+    }
+  ],
+  "verification": {
+    "is_valid": true,
+    "duration": 29.0,
+    "size_bytes": 803052,
+    "has_video": true,
+    "has_audio": true,
+    "format": "mov,mp4,m4a,3gp,3g2,mj2"
+  },
+  "engine_used": "manim"
+}

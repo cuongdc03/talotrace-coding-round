@@ -1,44 +1,56 @@
 {
+  "job_id": "job_aaa5a0e623fc",
   "query": "How does the pH scale work?",
   "topic": "PH_SCALE",
-  "title": "How the pH Scale Works: Acids, Bases, and Ions",
-  "overview": "Explore the pH scale from 0 to 14, discovering how hydrogen ion concentration determines whether a substance is acidic, neutral, or alkaline.",
-  "duration_seconds": 22.041667,
+  "title": "How the pH Scale Works: Acids, Bases, and Hydrogen Ions",
+  "duration_seconds": 29.041341,
+  "file_size_bytes": 952231,
   "video_path": "artifacts/videos/ph_scale.mp4",
-  "file_size_bytes": 766751,
-  "fallback_used": false,
   "scenes": [
     {
       "scene_id": 1,
-      "title": "The 0 to 14 Spectrum",
-      "narration": "The pH scale measures how acidic or basic a liquid is, running on a spectrum from 0 all the way to 14. A pH of 7 represents pure neutral water.",
+      "title": "The Universal Acidity Scale",
+      "narration": "The pH scale measures how acidic or alkaline a chemical solution is, ranging from zero to fourteen.",
       "visual_type": "ph_spectrum",
-      "key_takeaway": "pH ranges from 0 (strong acid) to 14 (strong base), with 7 as neutral.",
-      "duration_target_seconds": 6.0
-    },
-    {
-      "scene_id": 2,
-      "title": "Acids vs Bases: The Ion Balance",
-      "narration": "Acids, like lemon juice or stomach acid, have a pH below 7 and are packed with excess hydrogen ions. Bases, like soap and bleach, have a pH above 7 with excess hydroxide ions.",
-      "visual_type": "ph_ions",
-      "key_takeaway": "Acids release H+ ions (pH < 7); Bases release OH- ions (pH > 7).",
+      "key_takeaway": "The pH scale spans 0 to 14, measuring chemical acidity and alkalinity.",
+      "latex_formula": "0 \\le \\mathrm{pH} \\le 14",
       "duration_target_seconds": 7.0
     },
     {
-      "scene_id": 3,
-      "title": "The Logarithmic Nature of pH",
-      "narration": "Crucially, the pH scale is logarithmic. Each whole unit change represents a ten-fold difference in acidity. A pH of 5 is ten times more acidic than a pH of 6, and a hundred times more acidic than 7!",
-      "visual_type": "ph_logarithmic",
-      "key_takeaway": "Each step on the pH scale represents a 10x change in ion concentration.",
+      "scene_id": 2,
+      "title": "Hydrogen Ions and the Logarithmic Law",
+      "narration": "It quantifies hydrogen ion concentration mathematically as the negative base ten logarithm of proton molarity.",
+      "visual_type": "ph_equation",
+      "key_takeaway": "pH is inversely proportional to hydrogen ion concentration on a log10 scale.",
+      "latex_formula": "\\mathrm{pH} = -\\log_{10}[\\mathrm{H}^+]",
       "duration_target_seconds": 8.0
+    },
+    {
+      "scene_id": 3,
+      "title": "Logarithmic Multipliers",
+      "narration": "Because the scale is logarithmic, each single step represents a tenfold change in hydrogen ion concentration.",
+      "visual_type": "ph_logarithmic",
+      "key_takeaway": "Each step represents a 10x multiplier in hydrogen ion concentration.",
+      "latex_formula": "[\\mathrm{H}^+] = 10^{-\\mathrm{pH}}",
+      "duration_target_seconds": 8.0
+    },
+    {
+      "scene_id": 4,
+      "title": "The Equilibrium of Neutrality",
+      "narration": "At pH seven, hydrogen and hydroxide balance equally. Lower values are acids, while higher values are bases.",
+      "visual_type": "ph_summary",
+      "key_takeaway": "pH 7 is perfectly neutral, balancing H+ and OH- ions in water.",
+      "latex_formula": "\\mathrm{H}_2\\mathrm{O} \\rightleftharpoons \\mathrm{H}^+ + \\mathrm{OH}^-",
+      "duration_target_seconds": 7.5
     }
   ],
   "verification": {
     "is_valid": true,
-    "duration": 22.041667,
-    "size_bytes": 766751,
+    "duration": 29.041341,
+    "size_bytes": 952231,
     "has_video": true,
     "has_audio": true,
     "format": "mov,mp4,m4a,3gp,3g2,mj2"
-  }
+  },
+  "engine_used": "manim"
 }

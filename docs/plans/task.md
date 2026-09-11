@@ -9,3 +9,9 @@
 | 7 | FastAPI REST API Endpoints & Video Streaming | completed |
 | 8 | End-to-End Generation of the 3 Required Chemistry Videos | completed |
 | 9 | Documentation, Architecture Note, & Verification Walkthrough | completed |
+| 10 | Zero-Dependency LaTeX Equation Renderer Utility | completed |
+| 11 | Gemini LLM Script Generator with Structured Output & LaTeX Notation | completed |
+| 12 | Topic Classification & 30s Pedagogical Explainer Templates for 8 Concepts | completed |
+| 13 | Manim Explainer Animation Engine for All 8 Topics with LaTeX Callouts | completed |
+| 14 | End-to-End FastAPI Client Automation & 8 Explainer Video Generation | completed |
+| 15 | Final Verification, Linter, & Documentation Updates | completed |

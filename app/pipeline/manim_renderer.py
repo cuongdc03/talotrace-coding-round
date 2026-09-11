@@ -37,7 +37,9 @@ class ManimRenderer:
 
     def _generate_ph_scale_manim_code(self, duration: float, eq_png: Path) -> str:
         """Generate Manim scene script for the pH scale explanation."""
-        move_time = max(2.5, duration / 6.0)
+        move_time = max(2.5, duration / 7.0)
+        fixed_time = 1.2 + 1.5 + 1.2 + 1.2 + 1.0 + 1.5 + 2.0 + 2.0 + 2.0
+        final_wait = max(2.5, duration - (fixed_time + 2 * move_time))
         return f"""
 from manim import *
 
@@ -104,11 +106,12 @@ class ChemistryScene(Scene):
             FadeIn(takeaway),
             run_time=2.0,
         )
-        self.wait(3.0)
+        self.wait({final_wait:.1f})
 """
 
     def _generate_covalent_bonds_manim_code(self, duration: float, eq_png: Path) -> str:
         """Generate Manim scene script for covalent bonding with orbiting electrons."""
+        final_wait = max(2.5, duration - 25.0)
         return f"""
 from manim import *
 
@@ -118,11 +121,11 @@ class ChemistryScene(Scene):
 
         title = Text("Why Atoms Form Covalent Bonds", font_size=34, color="#38BDF8")
         title.to_edge(UP, buff=0.5)
-        self.play(Write(title), run_time=1.2)
+        self.play(Write(title), run_time=1.5)
 
         subtitle = Text("Isolated atoms seek stable valence shells (Octet/Duet Rule)", font_size=20, color="#94A3B8")
         subtitle.next_to(title, DOWN, buff=0.25)
-        self.play(FadeIn(subtitle), run_time=1.0)
+        self.play(FadeIn(subtitle), run_time=1.5)
 
         # Hydrogen Atom 1 (Left)
         h1_center = LEFT * 3.6 + UP * 0.4
@@ -143,9 +146,9 @@ class ChemistryScene(Scene):
         self.play(
             FadeIn(atom1_group), Create(shell1), FadeIn(electron1),
             FadeIn(atom2_group), Create(shell2), FadeIn(electron2),
-            run_time=2.0,
+            run_time=2.5,
         )
-        self.wait(1.5)
+        self.wait(2.5)
 
         # Move atoms inward to overlap shells
         overlap_h1 = LEFT * 0.85 + UP * 0.4
@@ -162,27 +165,29 @@ class ChemistryScene(Scene):
             electron1.animate.move_to(UP * 0.75 + UP * 0.4),
             electron2.animate.move_to(DOWN * 0.05 + UP * 0.4),
             Transform(subtitle, shared_subtitle),
-            run_time=3.5,
+            run_time=4.5,
         )
 
         # Overlap glow zone
         shared_zone = Ellipse(width=0.9, height=1.6, color="#FACC15", stroke_width=3).move_to(UP * 0.4)
         shared_label = Text("Shared Electron Pair", font_size=18, color="#FACC15").next_to(shared_zone, UP, buff=0.2)
-        self.play(Create(shared_zone), Write(shared_label), run_time=1.5)
-        self.wait(1.5)
+        self.play(Create(shared_zone), Write(shared_label), run_time=2.5)
+        self.wait(3.5)
 
         # Formula callout
         eq_mob = ImageMobject(r"{eq_png}").scale(0.85).shift(DOWN * 1.4)
-        self.play(FadeIn(eq_mob), run_time=1.2)
+        self.play(FadeIn(eq_mob), run_time=2.0)
+        self.wait(2.5)
 
         takeaway = Text("Electrostatic attraction between positive nuclei and shared electrons binds the molecule", font_size=18, color="#F8FAFC")
         takeaway.to_edge(DOWN, buff=0.4)
-        self.play(FadeIn(takeaway), run_time=1.2)
-        self.wait(3.0)
+        self.play(FadeIn(takeaway), run_time=2.0)
+        self.wait({final_wait:.1f})
 """
 
     def _generate_ionic_vs_covalent_manim_code(self, duration: float, eq_png: Path) -> str:
         """Generate Manim scene script for Ionic vs Covalent bonding."""
+        final_wait = max(2.5, duration - 25.5)
         return f"""
 from manim import *
 
@@ -192,14 +197,14 @@ class ChemistryScene(Scene):
 
         title = Text("Ionic vs Covalent Bonding: The Essential Differences", font_size=32, color="#38BDF8")
         title.to_edge(UP, buff=0.4)
-        self.play(Write(title), run_time=1.2)
+        self.play(Write(title), run_time=1.5)
 
         divider = Line(UP * 2.2, DOWN * 2.8, color="#334155", stroke_width=2)
-        self.play(Create(divider), run_time=0.8)
+        self.play(Create(divider), run_time=1.0)
 
         ionic_head = Text("IONIC: Electron Transfer", font_size=22, color="#F87171").move_to(LEFT * 3.5 + UP * 1.8)
         covalent_head = Text("COVALENT: Electron Sharing", font_size=22, color="#38BDF8").move_to(RIGHT * 3.5 + UP * 1.8)
-        self.play(FadeIn(ionic_head), FadeIn(covalent_head), run_time=1.0)
+        self.play(FadeIn(ionic_head), FadeIn(covalent_head), run_time=1.5)
 
         # --- LEFT: IONIC (Na -> Cl) ---
         na_atom = Dot(point=LEFT * 5.2 + UP * 0.6, radius=0.38, color="#F87171")
@@ -212,7 +217,7 @@ class ChemistryScene(Scene):
         self.play(
             FadeIn(na_atom), FadeIn(na_label), FadeIn(na_e),
             FadeIn(cl_atom), FadeIn(cl_label),
-            run_time=1.5,
+            run_time=2.5,
         )
 
         cl_target = LEFT * 2.6 + UP * 0.6
@@ -223,7 +228,7 @@ class ChemistryScene(Scene):
             na_e.animate.move_to(cl_target),
             Transform(na_label, new_na_label),
             Transform(cl_label, new_cl_label),
-            run_time=2.5,
+            run_time=4.0,
         )
 
         ionic_desc = VGroup(
@@ -231,8 +236,8 @@ class ChemistryScene(Scene):
             Text("- Rigid crystal lattice (NaCl)", font_size=15, color="#CBD5E1"),
             Text("- High melting points (>800 deg C)", font_size=15, color="#CBD5E1"),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.2).next_to(na_atom, DOWN, buff=0.8).shift(RIGHT * 1.5)
-        self.play(FadeIn(ionic_desc), run_time=1.2)
-        self.wait(1.0)
+        self.play(FadeIn(ionic_desc), run_time=2.5)
+        self.wait(2.5)
 
         # --- RIGHT: COVALENT ---
         h1 = Circle(radius=0.7, color="#38BDF8", stroke_width=2).move_to(RIGHT * 2.4 + UP * 0.6)
@@ -249,7 +254,7 @@ class ChemistryScene(Scene):
             Create(h1), FadeIn(h1_dot), FadeIn(h1_txt),
             Create(h2), FadeIn(h2_dot), FadeIn(h2_txt),
             FadeIn(shared_e),
-            run_time=2.0,
+            run_time=3.5,
         )
 
         covalent_desc = VGroup(
@@ -257,17 +262,18 @@ class ChemistryScene(Scene):
             Text("- Discrete molecules (H2O, CH4)", font_size=15, color="#CBD5E1"),
             Text("- Lower melting points, flexible", font_size=15, color="#CBD5E1"),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.2).next_to(h1, DOWN, buff=0.8).shift(RIGHT * 0.7)
-        self.play(FadeIn(covalent_desc), run_time=1.2)
-        self.wait(1.5)
+        self.play(FadeIn(covalent_desc), run_time=2.5)
+        self.wait(2.0)
 
         # Formula Callout at bottom
         eq_mob = ImageMobject(r"{eq_png}").scale(0.85).to_edge(DOWN, buff=0.3)
-        self.play(FadeIn(eq_mob), run_time=1.2)
-        self.wait(3.0)
+        self.play(FadeIn(eq_mob), run_time=2.0)
+        self.wait({final_wait:.1f})
 """
 
     def _generate_atomic_structure_manim_code(self, duration: float, eq_png: Path) -> str:
         """Generate Manim scene script for Atomic Structure and Bohr electron shells."""
+        final_wait = max(2.5, duration - 22.0)
         return f"""
 from manim import *
 
@@ -277,7 +283,7 @@ class ChemistryScene(Scene):
 
         title = Text("Atomic Structure & Subatomic Particles", font_size=34, color="#38BDF8")
         title.to_edge(UP, buff=0.5)
-        self.play(Write(title), run_time=1.2)
+        self.play(Write(title), run_time=1.5)
 
         # Central Nucleus
         nucleus = Circle(radius=0.7, color="#EF4444", fill_opacity=0.85).shift(UP * 0.4)
@@ -288,8 +294,8 @@ class ChemistryScene(Scene):
         n_label = Text("Nucleus (p+ & n0)", font_size=18, color=WHITE).next_to(nucleus, DOWN, buff=0.15)
         nuc_group = VGroup(nucleus, p1, p2, n1, n2, n_label)
 
-        self.play(FadeIn(nuc_group), run_time=1.5)
-        self.wait(1.0)
+        self.play(FadeIn(nuc_group), run_time=2.5)
+        self.wait(2.0)
 
         # Concentric Bohr Shells: n=1, n=2
         shell_k = Circle(radius=1.5, color="#38BDF8", stroke_width=2).move_to(nucleus.get_center())
@@ -297,8 +303,8 @@ class ChemistryScene(Scene):
         k_label = Text("n=1 (K Shell: max 2e-)", font_size=14, color="#38BDF8").next_to(shell_k, RIGHT, buff=0.2).shift(UP * 0.5)
         l_label = Text("n=2 (L Shell: max 8e-)", font_size=14, color="#818CF8").next_to(shell_l, RIGHT, buff=0.2).shift(UP * 0.8)
 
-        self.play(Create(shell_k), FadeIn(k_label), run_time=1.5)
-        self.play(Create(shell_l), FadeIn(l_label), run_time=1.5)
+        self.play(Create(shell_k), FadeIn(k_label), run_time=2.5)
+        self.play(Create(shell_l), FadeIn(l_label), run_time=2.5)
 
         # Orbiting Electrons
         e1 = Dot(point=nucleus.get_center() + UP * 1.5, radius=0.12, color="#FACC15")
@@ -306,21 +312,22 @@ class ChemistryScene(Scene):
         e3 = Dot(point=nucleus.get_center() + LEFT * 2.3, radius=0.12, color="#FACC15")
         e4 = Dot(point=nucleus.get_center() + RIGHT * 2.3, radius=0.12, color="#FACC15")
 
-        self.play(FadeIn(e1), FadeIn(e2), FadeIn(e3), FadeIn(e4), run_time=1.5)
-        self.wait(1.5)
+        self.play(FadeIn(e1), FadeIn(e2), FadeIn(e3), FadeIn(e4), run_time=3.5)
+        self.wait(3.0)
 
         # Formula callout
         eq_mob = ImageMobject(r"{eq_png}").scale(0.85).shift(DOWN * 1.6)
-        self.play(FadeIn(eq_mob), run_time=1.2)
+        self.play(FadeIn(eq_mob), run_time=2.0)
 
         takeaway = Text("Valence electrons in outermost shell dictate chemical bonding and reactivity", font_size=18, color="#F8FAFC")
         takeaway.to_edge(DOWN, buff=0.4)
-        self.play(FadeIn(takeaway), run_time=1.2)
-        self.wait(3.0)
+        self.play(FadeIn(takeaway), run_time=2.5)
+        self.wait({final_wait:.1f})
 """
 
     def _generate_exo_vs_endothermic_manim_code(self, duration: float, eq_png: Path) -> str:
         """Generate Manim scene script for Exothermic vs Endothermic energy profiles."""
+        final_wait = max(2.5, duration - 21.5)
         return f"""
 from manim import *
 
@@ -330,7 +337,7 @@ class ChemistryScene(Scene):
 
         title = Text("Exothermic vs Endothermic Reactions: Energy Profiles", font_size=32, color="#38BDF8")
         title.to_edge(UP, buff=0.5)
-        self.play(Write(title), run_time=1.2)
+        self.play(Write(title), run_time=1.5)
 
         # Potential Energy Coordinate Axes
         origin = LEFT * 5.0 + DOWN * 1.5
@@ -339,7 +346,7 @@ class ChemistryScene(Scene):
         x_label = Text("Reaction Coordinate (Time)", font_size=16, color="#94A3B8").next_to(x_axis, DOWN, buff=0.2)
         y_label = Text("Potential Energy (H)", font_size=16, color="#94A3B8").next_to(y_axis, UP, buff=0.2)
 
-        self.play(Create(x_axis), Create(y_axis), FadeIn(x_label), FadeIn(y_label), run_time=1.5)
+        self.play(Create(x_axis), Create(y_axis), FadeIn(x_label), FadeIn(y_label), run_time=2.5)
 
         # Exothermic Curve: Reactants (high) -> Peak (Ea) -> Products (low)
         r_line = Line(LEFT * 4.5 + UP * 0.5, LEFT * 3.2 + UP * 0.5, color="#F87171", stroke_width=4)
@@ -367,19 +374,25 @@ class ChemistryScene(Scene):
             Create(r_line), FadeIn(r_txt),
             Create(curve_exo),
             Create(p_line), FadeIn(p_txt),
-            run_time=3.0,
+            run_time=4.0,
         )
-        self.play(Create(ea_arrow), FadeIn(ea_txt), Create(dh_arrow), FadeIn(dh_txt), run_time=2.0)
-        self.wait(1.5)
+        self.play(Create(ea_arrow), FadeIn(ea_txt), Create(dh_arrow), FadeIn(dh_txt), run_time=3.0)
+        self.wait(3.5)
 
         # Formula callout
         eq_mob = ImageMobject(r"{eq_png}").scale(0.85).to_edge(DOWN, buff=0.4)
-        self.play(FadeIn(eq_mob), run_time=1.2)
-        self.wait(3.0)
+        self.play(FadeIn(eq_mob), run_time=2.0)
+        self.wait(2.5)
+
+        takeaway = Text("Activation energy is the barrier to initiate; Delta H dictates heat flow", font_size=18, color="#F8FAFC")
+        takeaway.to_edge(DOWN, buff=0.4)
+        self.play(FadeIn(takeaway), run_time=2.5)
+        self.wait({final_wait:.1f})
 """
 
     def _generate_periodic_trends_manim_code(self, duration: float, eq_png: Path) -> str:
         """Generate Manim scene script for Periodic Table Trends & Electronegativity."""
+        final_wait = max(2.5, duration - 22.5)
         return f"""
 from manim import *
 
@@ -389,12 +402,12 @@ class ChemistryScene(Scene):
 
         title = Text("Periodic Table Trends: Electronegativity & Radius", font_size=32, color="#38BDF8")
         title.to_edge(UP, buff=0.5)
-        self.play(Write(title), run_time=1.2)
+        self.play(Write(title), run_time=1.5)
 
         # Stylized Periodic Table Outline Box
         pt_box = Rectangle(width=9.5, height=3.2, color="#334155", stroke_width=2).shift(UP * 0.2)
         pt_label = Text("Mendeleev Periodic Table (Periods & Groups)", font_size=18, color="#64748B").next_to(pt_box, UP, buff=0.15)
-        self.play(Create(pt_box), FadeIn(pt_label), run_time=1.5)
+        self.play(Create(pt_box), FadeIn(pt_label), run_time=2.5)
 
         # Electronegativity Arrow: Left to Right across period (increases)
         en_arrow = Arrow(LEFT * 4.0 + DOWN * 0.8, RIGHT * 4.0 + DOWN * 0.8, color="#FACC15", stroke_width=5)
@@ -404,24 +417,30 @@ class ChemistryScene(Scene):
         up_arrow = Arrow(RIGHT * 4.2 + DOWN * 1.0, RIGHT * 4.2 + UP * 1.4, color="#FACC15", stroke_width=5)
         up_txt = Text("Increases Up Groups ^", font_size=15, color="#FACC15").next_to(up_arrow, RIGHT, buff=0.15)
 
-        self.play(Create(en_arrow), FadeIn(en_txt), run_time=2.0)
-        self.play(Create(up_arrow), FadeIn(up_txt), run_time=1.5)
-        self.wait(1.5)
+        self.play(Create(en_arrow), FadeIn(en_txt), run_time=3.5)
+        self.play(Create(up_arrow), FadeIn(up_txt), run_time=2.5)
+        self.wait(2.5)
 
         # Atomic Radius Arrow: Opposite trend (Decreases across periods, increases down groups)
         rad_arrow = Arrow(RIGHT * 3.5 + UP * 0.8, LEFT * 3.5 + UP * 0.8, color="#38BDF8", stroke_width=4)
         rad_txt = Text("<- Atomic Radius Increases (Opposite Direction)", font_size=16, color="#38BDF8").next_to(rad_arrow, DOWN, buff=0.15)
-        self.play(Create(rad_arrow), FadeIn(rad_txt), run_time=2.0)
-        self.wait(1.5)
+        self.play(Create(rad_arrow), FadeIn(rad_txt), run_time=3.5)
+        self.wait(2.0)
 
         # Formula callout
         eq_mob = ImageMobject(r"{eq_png}").scale(0.85).to_edge(DOWN, buff=0.4)
-        self.play(FadeIn(eq_mob), run_time=1.2)
-        self.wait(3.0)
+        self.play(FadeIn(eq_mob), run_time=2.0)
+        self.wait(2.5)
+
+        takeaway = Text("Periodic trends allow chemists to predict reactivity across all elements", font_size=18, color="#F8FAFC")
+        takeaway.to_edge(DOWN, buff=0.4)
+        self.play(FadeIn(takeaway), run_time=2.5)
+        self.wait({final_wait:.1f})
 """
 
     def _generate_states_of_matter_manim_code(self, duration: float, eq_png: Path) -> str:
         """Generate Manim scene script for States of Matter & Phase Transitions."""
+        final_wait = max(2.5, duration - 22.0)
         return f"""
 from manim import *
 
@@ -431,7 +450,7 @@ class ChemistryScene(Scene):
 
         title = Text("States of Matter and Phase Transitions", font_size=34, color="#38BDF8")
         title.to_edge(UP, buff=0.5)
-        self.play(Write(title), run_time=1.2)
+        self.play(Write(title), run_time=1.5)
 
         # Three Phase Boxes: Solid, Liquid, Gas
         b_solid = Rectangle(width=2.8, height=2.6, color="#38BDF8", stroke_width=2).move_to(LEFT * 3.6 + UP * 0.4)
@@ -447,7 +466,7 @@ class ChemistryScene(Scene):
             Create(b_solid), FadeIn(lbl_solid),
             Create(b_liquid), FadeIn(lbl_liquid),
             Create(b_gas), FadeIn(lbl_gas),
-            run_time=1.5,
+            run_time=2.5,
         )
 
         # Solid dots in rigid 3x3 grid
@@ -469,8 +488,8 @@ class ChemistryScene(Scene):
         for dx, dy in positions_g:
             gas_dots.add(Dot(point=RIGHT * 3.6 + UP * 0.4 + np.array([dx, dy, 0]), radius=0.12, color="#F87171"))
 
-        self.play(FadeIn(solid_dots), FadeIn(liquid_dots), FadeIn(gas_dots), run_time=2.0)
-        self.wait(1.5)
+        self.play(FadeIn(solid_dots), FadeIn(liquid_dots), FadeIn(gas_dots), run_time=3.5)
+        self.wait(2.5)
 
         # Transition Arrows: Melting and Vaporization
         arrow_melt = Arrow(LEFT * 2.1 + UP * 0.4, LEFT * 1.5 + UP * 0.4, color="#FACC15", buff=0)
@@ -479,17 +498,23 @@ class ChemistryScene(Scene):
         arrow_boil = Arrow(RIGHT * 1.5 + UP * 0.4, RIGHT * 2.1 + UP * 0.4, color="#FACC15", buff=0)
         lbl_boil = Text("Boiling", font_size=12, color="#FACC15").next_to(arrow_boil, UP, buff=0.1)
 
-        self.play(Create(arrow_melt), FadeIn(lbl_melt), Create(arrow_boil), FadeIn(lbl_boil), run_time=1.5)
-        self.wait(1.5)
+        self.play(Create(arrow_melt), FadeIn(lbl_melt), Create(arrow_boil), FadeIn(lbl_boil), run_time=2.5)
+        self.wait(2.5)
 
         # Formula callout
         eq_mob = ImageMobject(r"{eq_png}").scale(0.85).to_edge(DOWN, buff=0.4)
-        self.play(FadeIn(eq_mob), run_time=1.2)
-        self.wait(3.0)
+        self.play(FadeIn(eq_mob), run_time=2.0)
+        self.wait(2.5)
+
+        takeaway = Text("Kinetic thermal energy determines whether intermolecular bonds hold particles", font_size=18, color="#F8FAFC")
+        takeaway.to_edge(DOWN, buff=0.4)
+        self.play(FadeIn(takeaway), run_time=2.5)
+        self.wait({final_wait:.1f})
 """
 
     def _generate_acid_base_neutralization_manim_code(self, duration: float, eq_png: Path) -> str:
         """Generate Manim scene script for Acid-Base Neutralization and Titration."""
+        final_wait = max(2.5, duration - 22.5)
         return f"""
 from manim import *
 
@@ -499,7 +524,7 @@ class ChemistryScene(Scene):
 
         title = Text("Acid-Base Neutralization & Titration", font_size=34, color="#38BDF8")
         title.to_edge(UP, buff=0.5)
-        self.play(Write(title), run_time=1.2)
+        self.play(Write(title), run_time=1.5)
 
         # Acidic Beaker (Left, Red)
         beaker_a = Rectangle(width=2.5, height=3.0, color="#EF4444", stroke_width=2).move_to(LEFT * 3.5 + UP * 0.2)
@@ -515,8 +540,8 @@ class ChemistryScene(Scene):
         ion_oh = Text("OH-", font_size=24, color=WHITE).move_to(fluid_b.get_center())
         base_grp = VGroup(beaker_b, fluid_b, txt_b, ion_oh)
 
-        self.play(FadeIn(acid_grp), FadeIn(base_grp), run_time=2.0)
-        self.wait(1.5)
+        self.play(FadeIn(acid_grp), FadeIn(base_grp), run_time=3.0)
+        self.wait(2.0)
 
         # Mix ions in center
         center_fluid = Rectangle(width=3.2, height=2.0, color="#22C55E", fill_opacity=0.5, stroke_width=2).shift(DOWN * 0.2)
@@ -526,18 +551,23 @@ class ChemistryScene(Scene):
             ion_h.animate.move_to(ORIGIN + DOWN * 0.2 + LEFT * 0.6),
             ion_oh.animate.move_to(ORIGIN + DOWN * 0.2 + RIGHT * 0.6),
             FadeIn(center_fluid), FadeIn(center_txt),
-            run_time=3.0,
+            run_time=4.0,
         )
 
         # Combine ions into H2O
         h2o_txt = Text("H2O (pH 7.0 Neutral)", font_size=24, color=WHITE).move_to(center_fluid.get_center())
-        self.play(Transform(ion_h, h2o_txt), FadeOut(ion_oh), run_time=1.5)
-        self.wait(1.5)
+        self.play(Transform(ion_h, h2o_txt), FadeOut(ion_oh), run_time=3.0)
+        self.wait(2.0)
 
         # Formula callout
         eq_mob = ImageMobject(r"{eq_png}").scale(0.85).to_edge(DOWN, buff=0.3)
-        self.play(FadeIn(eq_mob), run_time=1.2)
-        self.wait(3.0)
+        self.play(FadeIn(eq_mob), run_time=2.0)
+        self.wait(2.5)
+
+        takeaway = Text("Neutralization eliminates free protons, yielding salt and neutral water", font_size=18, color="#F8FAFC")
+        takeaway.to_edge(DOWN, buff=0.4)
+        self.play(FadeIn(takeaway), run_time=2.5)
+        self.wait({final_wait:.1f})
 """
 
     async def render_topic_video(

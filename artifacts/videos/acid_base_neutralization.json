@@ -1,0 +1,56 @@
+{
+  "job_id": "job_30a0d8ac9d6a",
+  "query": "What happens during an acid-base neutralization reaction?",
+  "topic": "ACID_BASE_NEUTRALIZATION",
+  "title": "Acid-Base Neutralization and Titration Reactions",
+  "duration_seconds": 29.5,
+  "file_size_bytes": 834554,
+  "video_path": "artifacts/videos/acid_base_neutralization.mp4",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "title": "When Opposites Meet",
+      "narration": "Acids and bases represent opposite chemical extremes that neutralize one another when mixed in stoichiometric balance.",
+      "visual_type": "neutralization_intro",
+      "key_takeaway": "Neutralization occurs when acids and bases react to cancel each other out.",
+      "latex_formula": "\\mathrm{Acid} + \\mathrm{Base} \\rightarrow \\mathrm{Salt} + \\mathrm{Water}",
+      "duration_target_seconds": 7.5
+    },
+    {
+      "scene_id": 2,
+      "title": "The Fundamental Ionic Reaction",
+      "narration": "At the microscopic level, acidic protons and alkaline hydroxide ions combine rapidly into pure water.",
+      "visual_type": "neutralization_reaction",
+      "key_takeaway": "Hydronium and hydroxide combine directly into water molecules.",
+      "latex_formula": "\\mathrm{H}^+ + \\mathrm{OH}^- \\rightarrow \\mathrm{H}_2\\mathrm{O}",
+      "duration_target_seconds": 8.0
+    },
+    {
+      "scene_id": 3,
+      "title": "Salt Formation and pH Shift",
+      "narration": "Meanwhile, spectator ions combine to produce dissolved salt as the solution shifts toward neutral pH seven.",
+      "visual_type": "neutralization_indicator",
+      "key_takeaway": "Counter-ions form salt, while solution pH shifts toward neutral 7.",
+      "latex_formula": "\\mathrm{HCl} + \\mathrm{NaOH} \\rightarrow \\mathrm{NaCl} + \\mathrm{H}_2\\mathrm{O}",
+      "duration_target_seconds": 8.0
+    },
+    {
+      "scene_id": 4,
+      "title": "Titration and Analytical Precision",
+      "narration": "Chemists employ neutralization reactions during volumetric titrations to determine unknown acid concentrations with high analytical precision.",
+      "visual_type": "neutralization_summary",
+      "key_takeaway": "Titration uses neutralization to accurately calculate chemical concentrations.",
+      "latex_formula": "M_1 V_1 = M_2 V_2 \\implies \\text{Equivalence Point}",
+      "duration_target_seconds": 7.5
+    }
+  ],
+  "verification": {
+    "is_valid": true,
+    "duration": 29.5,
+    "size_bytes": 834554,
+    "has_video": true,
+    "has_audio": true,
+    "format": "mov,mp4,m4a,3gp,3g2,mj2"
+  },
+  "engine_used": "manim"
+}

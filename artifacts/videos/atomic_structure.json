@@ -1,0 +1,56 @@
+{
+  "job_id": "job_a3bbfce68de4",
+  "query": "What is the structure of an atom and its subatomic particles?",
+  "topic": "ATOMIC_STRUCTURE",
+  "title": "The Structure of the Atom and Subatomic Particles",
+  "duration_seconds": 29.0,
+  "file_size_bytes": 803488,
+  "video_path": "artifacts/videos/atomic_structure.mp4",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "title": "The Building Blocks of Matter",
+      "narration": "Every element in the cosmos is constructed from tiny atoms composed of three fundamental subatomic particles.",
+      "visual_type": "atomic_intro",
+      "key_takeaway": "Atoms consist of protons, neutrons, and electrons.",
+      "latex_formula": "\\text{Atom} = p^+ + n^0 + e^-",
+      "duration_target_seconds": 7.0
+    },
+    {
+      "scene_id": 2,
+      "title": "The Dense Central Nucleus",
+      "narration": "At the center lies the dense nucleus of protons and neutrons, holding nearly all atomic mass.",
+      "visual_type": "atomic_nucleus",
+      "key_takeaway": "Protons and neutrons pack the central nucleus with positive charge.",
+      "latex_formula": "m_{\\text{nucleus}} \\approx 99.9\\% \\cdot m_{\\text{atom}}",
+      "duration_target_seconds": 8.0
+    },
+    {
+      "scene_id": 3,
+      "title": "Quantized Electron Shells",
+      "narration": "Electrons orbit the nucleus in quantized energy shells, accommodating two, eight, or eighteen electrons maximum.",
+      "visual_type": "atomic_shells",
+      "key_takeaway": "Electrons inhabit quantized energy levels with maximum capacity 2n^2.",
+      "latex_formula": "N_{\\max} = 2n^2 \\implies 2, 8, 18, 32",
+      "duration_target_seconds": 8.0
+    },
+    {
+      "scene_id": 4,
+      "title": "Valence and Chemical Reactivity",
+      "narration": "Electrons in the outermost valence shell dictate all chemical reactivity and molecular bonding across the universe.",
+      "visual_type": "atomic_summary",
+      "key_takeaway": "Valence electrons govern chemical reactivity and molecular formation.",
+      "latex_formula": "\\text{Valence Shell} \\implies \\text{Chemical Behavior}",
+      "duration_target_seconds": 7.5
+    }
+  ],
+  "verification": {
+    "is_valid": true,
+    "duration": 29.0,
+    "size_bytes": 803488,
+    "has_video": true,
+    "has_audio": true,
+    "format": "mov,mp4,m4a,3gp,3g2,mj2"
+  },
+  "engine_used": "manim"
+}

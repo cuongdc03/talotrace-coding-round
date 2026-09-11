@@ -1,44 +1,56 @@
 {
+  "job_id": "job_be9955442c78",
   "query": "Why do atoms form covalent bonds?",
   "topic": "COVALENT_BONDS",
   "title": "Why Atoms Form Covalent Bonds",
-  "overview": "Understand how nonmetal atoms achieve electronic stability by sharing valence electron pairs to complete their outer shells.",
-  "duration_seconds": 9.5,
+  "duration_seconds": 29.083333,
+  "file_size_bytes": 974241,
   "video_path": "artifacts/videos/covalent_bonds.mp4",
-  "file_size_bytes": 475783,
-  "fallback_used": false,
   "scenes": [
     {
       "scene_id": 1,
-      "title": "The Quest for Stability",
-      "narration": "Atoms form chemical bonds to achieve electron stability. Most atoms are most stable when their outermost valence shell is completely full of electrons, following the octet rule.",
+      "title": "The Drive for Electronic Stability",
+      "narration": "Atoms in nature seek electronic stability, striving to achieve complete outer valence shells with eight electrons.",
       "visual_type": "covalent_octet",
-      "key_takeaway": "Atoms seek full valence electron shells for maximum stability.",
-      "duration_target_seconds": 6.5
+      "key_takeaway": "Atoms seek complete outer valence shells to achieve stable configurations.",
+      "latex_formula": "s^2 p^6 \\implies \\text{Octet Stability}",
+      "duration_target_seconds": 7.0
     },
     {
       "scene_id": 2,
-      "title": "Sharing Electron Pairs",
-      "narration": "When nonmetal atoms meet, neither has enough electronegativity to completely strip electrons from the other. Instead, their outer electron orbitals overlap, and they share pairs of electrons.",
+      "title": "Orbital Overlap and Electron Sharing",
+      "narration": "When nonmetal atoms encounter one another, their high electronegativity drives them to share valence electron pairs.",
       "visual_type": "covalent_sharing",
-      "key_takeaway": "Covalent bonds form when overlapping atoms share valence electron pairs.",
-      "duration_target_seconds": 7.5
+      "key_takeaway": "Nonmetals share electron pairs rather than transferring them.",
+      "latex_formula": "\\mathrm{H}\\cdot + \\cdot\\mathrm{H} \\rightarrow \\mathrm{H}:\\mathrm{H}",
+      "duration_target_seconds": 8.0
     },
     {
       "scene_id": 3,
-      "title": "The Molecular Glue",
-      "narration": "The shared negatively charged electrons are simultaneously attracted to the positively charged nuclei of both atoms. This electrostatic attraction holds the atoms tightly together into a molecule.",
+      "title": "Electrostatic Molecular Binding",
+      "narration": "These shared negative electrons attract both positive nuclei simultaneously, creating a strong electrostatic molecular bond.",
       "visual_type": "covalent_molecule",
-      "key_takeaway": "Electrostatic attraction between positive nuclei and shared electrons binds the molecule.",
+      "key_takeaway": "Simultaneous attraction of nuclei to shared electrons holds the bond tight.",
+      "latex_formula": "F = \\frac{k \\cdot q_1 q_2}{r^2}",
+      "duration_target_seconds": 8.0
+    },
+    {
+      "scene_id": 4,
+      "title": "The Architecture of Molecular Matter",
+      "narration": "Through covalent sharing, essential molecules like water, methane, and DNA build the architecture of our world.",
+      "visual_type": "covalent_summary",
+      "key_takeaway": "Covalent bonds build discrete, robust molecular structures.",
+      "latex_formula": "2\\mathrm{H}_2 + \\mathrm{O}_2 \\rightarrow 2\\mathrm{H}_2\\mathrm{O}",
       "duration_target_seconds": 7.5
     }
   ],
   "verification": {
     "is_valid": true,
-    "duration": 9.5,
-    "size_bytes": 475783,
+    "duration": 29.083333,
+    "size_bytes": 974241,
     "has_video": true,
     "has_audio": true,
     "format": "mov,mp4,m4a,3gp,3g2,mj2"
-  }
+  },
+  "engine_used": "manim"
 }

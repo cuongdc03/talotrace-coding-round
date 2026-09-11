@@ -65,13 +65,14 @@ class GenerationPipeline:
         # Concatenate audio files first if multiple scenes
         if len(audio_paths) == 1:
             full_audio = audio_paths[0]
+            concat_txt = None
         else:
-            concat_txt = output_path.parent / "audio_concat.txt"
+            concat_txt = output_path.parent / f"{output_path.stem}_audio_concat.txt"
             with open(concat_txt, "w", encoding="utf-8") as f:
                 for a in audio_paths:
                     f.write(f"file '{a.resolve()}'\n")
 
-            full_audio = output_path.parent / "combined_narration.mp3"
+            full_audio = output_path.parent / f"{output_path.stem}_combined_audio.mp3"
             proc_audio = await asyncio.create_subprocess_exec(
                 ffmpeg_bin,
                 "-y",
@@ -90,6 +91,7 @@ class GenerationPipeline:
             await proc_audio.communicate()
 
         # Merge video and audio with AAC and H.264
+        # Using -af apad ensures audio is padded with silence to match full video length
         cmd = [
             ffmpeg_bin,
             "-y",
@@ -99,6 +101,8 @@ class GenerationPipeline:
             str(full_audio),
             "-c:v",
             "copy",
+            "-af",
+            "apad",
             "-c:a",
             "aac",
             "-b:a",
@@ -117,6 +121,11 @@ class GenerationPipeline:
         if proc.returncode != 0:
             logger.error("FFmpeg audio-video merge failed: %s", stderr.decode())
             raise RuntimeError("Failed merging audio with Manim video")
+
+        if concat_txt and concat_txt.exists():
+            concat_txt.unlink(missing_ok=True)
+        if full_audio != audio_paths[0] and full_audio.exists():
+            full_audio.unlink(missing_ok=True)
 
         return output_path
 
@@ -183,10 +192,11 @@ class GenerationPipeline:
             )
             manim_raw_mp4 = settings.VIDEOS_DIR / f"{job_id}_manim_raw.mp4"
             try:
+                target_video_duration = max(29.0, total_audio_duration)
                 rendered_manim = await self.manim_renderer.render_topic_video(
                     topic=topic,
                     output_path=manim_raw_mp4,
-                    duration=total_audio_duration,
+                    duration=target_video_duration,
                 )
                 if rendered_manim and rendered_manim.exists():
                     # Combine Manim video with synthesized audio

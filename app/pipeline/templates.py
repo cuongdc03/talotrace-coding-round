@@ -13,7 +13,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=1,
                 title="The Universal Acidity Scale",
-                narration="From tangy lemon juice to slippery household soap, solutions carry varying chemical powers. The pH scale provides a standardized measurement spectrum from zero all the way to fourteen.",
+                narration="The pH scale measures how acidic or alkaline a chemical solution is, ranging from zero to fourteen.",
                 visual_type="ph_spectrum",
                 key_takeaway="The pH scale spans 0 to 14, measuring chemical acidity and alkalinity.",
                 latex_formula=r"0 \le \mathrm{pH} \le 14",
@@ -22,7 +22,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=2,
                 title="Hydrogen Ions and the Logarithmic Law",
-                narration="At its heart, pH quantifies the exact concentration of active hydrogen ions in water. Mathematically, it is defined as the negative base ten logarithm of the hydrogen ion molarity.",
+                narration="It quantifies hydrogen ion concentration mathematically as the negative base ten logarithm of proton molarity.",
                 visual_type="ph_equation",
                 key_takeaway="pH is inversely proportional to hydrogen ion concentration on a log10 scale.",
                 latex_formula=r"\mathrm{pH} = -\log_{10}[\mathrm{H}^+]",
@@ -31,7 +31,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=3,
                 title="Logarithmic Multipliers",
-                narration="Because this relationship is logarithmic, each single step represents a ten-fold change. A solution at pH 5 is ten times more acidic than pH 6, and one hundred times more acidic than pure water at 7.",
+                narration="Because the scale is logarithmic, each single step represents a tenfold change in hydrogen ion concentration.",
                 visual_type="ph_logarithmic",
                 key_takeaway="Each step represents a 10x multiplier in hydrogen ion concentration.",
                 latex_formula=r"[\mathrm{H}^+] = 10^{-\mathrm{pH}}",
@@ -40,7 +40,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=4,
                 title="The Equilibrium of Neutrality",
-                narration="At pH seven, hydrogen and hydroxide ions balance in equal harmony. Values below seven reveal excess acidic protons, while values above indicate an abundance of alkaline hydroxide.",
+                narration="At pH seven, hydrogen and hydroxide balance equally. Lower values are acids, while higher values are bases.",
                 visual_type="ph_summary",
                 key_takeaway="pH 7 is perfectly neutral, balancing H+ and OH- ions in water.",
                 latex_formula=r"\mathrm{H}_2\mathrm{O} \rightleftharpoons \mathrm{H}^+ + \mathrm{OH}^-",
@@ -56,7 +56,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=1,
                 title="The Drive for Electronic Stability",
-                narration="Atoms in nature are constantly driven toward thermodynamic stability. Most main group elements achieve their lowest energy state when their outer valence shell holds eight electrons.",
+                narration="Atoms in nature seek electronic stability, striving to achieve complete outer valence shells with eight electrons.",
                 visual_type="covalent_octet",
                 key_takeaway="Atoms seek complete outer valence shells to achieve stable configurations.",
                 latex_formula=r"s^2 p^6 \implies \text{Octet Stability}",
@@ -65,7 +65,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=2,
                 title="Orbital Overlap and Electron Sharing",
-                narration="When nonmetal atoms encounter one another, their high electronegativities prevent either from seizing electrons outright. Instead, their atomic orbitals merge, forming shared electron pairs.",
+                narration="When nonmetal atoms encounter one another, their high electronegativity drives them to share valence electron pairs.",
                 visual_type="covalent_sharing",
                 key_takeaway="Nonmetals share electron pairs rather than transferring them.",
                 latex_formula=r"\mathrm{H}\cdot + \cdot\mathrm{H} \rightarrow \mathrm{H}:\mathrm{H}",
@@ -74,7 +74,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=3,
                 title="Electrostatic Molecular Binding",
-                narration="These shared negative electrons are pulled equally by the positive nuclei of both partner atoms. This mutual attraction produces a strong electrostatic bond that anchors the molecule together.",
+                narration="These shared negative electrons attract both positive nuclei simultaneously, creating a strong electrostatic molecular bond.",
                 visual_type="covalent_molecule",
                 key_takeaway="Simultaneous attraction of nuclei to shared electrons holds the bond tight.",
                 latex_formula=r"F = \frac{k \cdot q_1 q_2}{r^2}",
@@ -83,7 +83,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=4,
                 title="The Architecture of Molecular Matter",
-                narration="Through covalent sharing, essential life-giving molecules like water, methane, and DNA take form, creating stable molecular architectures that build our organic world.",
+                narration="Through covalent sharing, essential molecules like water, methane, and DNA build the architecture of our world.",
                 visual_type="covalent_summary",
                 key_takeaway="Covalent bonds build discrete, robust molecular structures.",
                 latex_formula=r"2\mathrm{H}_2 + \mathrm{O}_2 \rightarrow 2\mathrm{H}_2\mathrm{O}",
@@ -99,7 +99,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=1,
                 title="Two Paths to Chemical Unity",
-                narration="Chemical bonding comes down to one decisive question: do atoms transfer electrons completely, or do they share them mutually? This distinction separates ionic and covalent matter.",
+                narration="Chemical bonds form either by completely transferring electrons or by sharing them between partner atoms.",
                 visual_type="bonding_overview",
                 key_takeaway="Atoms bond through either electron transfer (ionic) or electron sharing (covalent).",
                 latex_formula=r"\Delta\chi > 2.0 \implies \text{Ionic}, \quad \Delta\chi < 1.7 \implies \text{Covalent}",
@@ -108,7 +108,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=2,
                 title="Ionic Bonding: Complete Transfer",
-                narration="In ionic bonds, an electropositive metal surrenders an electron to an electronegative nonmetal. Oppositely charged ions attract, packing tightly into a rigid, crystalline lattice.",
+                narration="In ionic bonding, metals transfer electrons to nonmetals, forming oppositely charged ions in rigid crystalline lattices.",
                 visual_type="ionic_transfer",
                 key_takeaway="Metals donate electrons to nonmetals, forming electrostatic ionic lattices.",
                 latex_formula=r"\mathrm{Na} + \mathrm{Cl} \rightarrow \mathrm{Na}^+ + \mathrm{Cl}^-",
@@ -117,7 +117,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=3,
                 title="Covalent Bonding: Mutual Orbital Sharing",
-                narration="In covalent bonds, nonmetal atoms share electron pairs between overlapping valence orbitals, constructing distinct, localized molecular units rather than continuous crystal networks.",
+                narration="In covalent bonding, nonmetal atoms share electron pairs between overlapping orbitals to construct discrete molecules.",
                 visual_type="covalent_overlap",
                 key_takeaway="Covalent bonds involve localized sharing of valence electron pairs.",
                 latex_formula=r"\mathrm{H}_2\mathrm{O}, \quad \mathrm{CH}_4, \quad \mathrm{CO}_2",
@@ -126,7 +126,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=4,
                 title="Physical Properties in Contrast",
-                narration="Because ionic bonds involve vast electrostatic grids, salts exhibit very high melting temperatures. Covalent molecules enjoy directional bonds, producing gases, liquids, and flexible plastics.",
+                narration="Consequently, ionic salts have very high melting points, while covalent compounds form flexible liquids and gases.",
                 visual_type="comparison_table",
                 key_takeaway="Ionic compounds are hard, high-melting crystals; covalent substances form diverse molecules.",
                 latex_formula=r"T_{\mathrm{melt}}(\mathrm{NaCl}) = 801^{\circ}\mathrm{C} \gg T_{\mathrm{melt}}(\mathrm{H}_2\mathrm{O}) = 0^{\circ}\mathrm{C}",
@@ -142,7 +142,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=1,
                 title="The Building Blocks of Matter",
-                narration="Every element in the cosmos is constructed from tiny atomic building blocks. Though once thought indivisible, every atom contains three fundamental subatomic particles.",
+                narration="Every element in the cosmos is constructed from tiny atoms composed of three fundamental subatomic particles.",
                 visual_type="atomic_intro",
                 key_takeaway="Atoms consist of protons, neutrons, and electrons.",
                 latex_formula=r"\text{Atom} = p^+ + n^0 + e^-",
@@ -151,7 +151,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=2,
                 title="The Dense Central Nucleus",
-                narration="At the center lies the ultra-dense atomic nucleus, containing positively charged protons and neutral neutrons, holding over ninety-nine point nine percent of the entire atomic mass.",
+                narration="At the center lies the dense nucleus of protons and neutrons, holding nearly all atomic mass.",
                 visual_type="atomic_nucleus",
                 key_takeaway="Protons and neutrons pack the central nucleus with positive charge.",
                 latex_formula=r"m_{\text{nucleus}} \approx 99.9\% \cdot m_{\text{atom}}",
@@ -160,7 +160,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=3,
                 title="Quantized Electron Shells",
-                narration="Orbiting the nucleus in distinct energy levels are negatively charged electrons. Under the Bohr model, each shell accommodates a strictly limited capacity of two, eight, and eighteen electrons.",
+                narration="Electrons orbit the nucleus in quantized energy shells, accommodating two, eight, or eighteen electrons maximum.",
                 visual_type="atomic_shells",
                 key_takeaway="Electrons inhabit quantized energy levels with maximum capacity 2n^2.",
                 latex_formula=r"N_{\max} = 2n^2 \implies 2, 8, 18, 32",
@@ -169,7 +169,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=4,
                 title="Valence and Chemical Reactivity",
-                narration="Electrons residing in the outermost valence shell dictate all chemical reactions. When valence shells are full, atoms remain unreactive; when incomplete, they bond to build the universe.",
+                narration="Electrons in the outermost valence shell dictate all chemical reactivity and molecular bonding across the universe.",
                 visual_type="atomic_summary",
                 key_takeaway="Valence electrons govern chemical reactivity and molecular formation.",
                 latex_formula=r"\text{Valence Shell} \implies \text{Chemical Behavior}",
@@ -185,7 +185,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=1,
                 title="The Thermodynamics of Reactions",
-                narration="Chemical reactions constantly exchange heat with their environment. Some release intense thermal energy, while others absorb ambient heat, cooling their surroundings.",
+                narration="Chemical reactions constantly exchange heat energy with their surroundings, classified as either exothermic or endothermic.",
                 visual_type="energy_intro",
                 key_takeaway="Chemical reactions either release heat (exothermic) or absorb heat (endothermic).",
                 latex_formula=r"\Delta H = H_{\mathrm{products}} - H_{\mathrm{reactants}}",
@@ -194,7 +194,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=2,
                 title="Exothermic Reactions: Releasing Thermal Energy",
-                narration="In exothermic reactions, such as combustion, chemical bonds in the products are stronger and more stable than the reactants. The excess energy is expelled as radiant heat and light.",
+                narration="Exothermic reactions release thermal energy because new bonds in the products are stronger than reactant bonds.",
                 visual_type="exothermic_profile",
                 key_takeaway="Exothermic: Products have lower energy than reactants; Delta H is negative.",
                 latex_formula=r"\Delta H < 0 \quad (\text{Heat Released})",
@@ -203,7 +203,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=3,
                 title="Endothermic Reactions: Absorbing Heat",
-                narration="Conversely, endothermic reactions absorb heat from their surroundings to bridge the energy deficit. The products store greater chemical enthalpy than the original reactants.",
+                narration="Endothermic reactions absorb ambient heat from their environment, producing products that store greater chemical enthalpy.",
                 visual_type="endothermic_profile",
                 key_takeaway="Endothermic: Products have higher energy than reactants; Delta H is positive.",
                 latex_formula=r"\Delta H > 0 \quad (\text{Heat Absorbed})",
@@ -212,7 +212,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=4,
                 title="The Activation Energy Hill",
-                narration="Both pathways require an initial input of activation energy to climb the transition barrier before breaking existing bonds and synthesizing new, enduring chemical structures.",
+                narration="Both reaction types require activation energy to climb the kinetic barrier before transforming into products.",
                 visual_type="energy_summary",
                 key_takeaway="Activation energy Ea is the kinetic threshold required to initiate reaction.",
                 latex_formula=r"k = A \cdot e^{-\frac{E_a}{RT}}",
@@ -228,7 +228,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=1,
                 title="The Map of the Elements",
-                narration="The periodic table organizes all one hundred and eighteen known elements systematically by increasing atomic number, mapping out predictable chemical behaviors across periods and groups.",
+                narration="The periodic table organizes all chemical elements by atomic number into distinct periods and groups.",
                 visual_type="periodic_intro",
                 key_takeaway="Elements are organized by atomic number into periods (rows) and groups (columns).",
                 latex_formula=r"Z = \text{Number of Protons}",
@@ -237,7 +237,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=2,
                 title="Electronegativity: The Pull for Electrons",
-                narration="Electronegativity measures an atom's greedy pull for shared electrons. As you move left to right across a period, effective nuclear charge increases, pulling electrons with greater force.",
+                narration="Electronegativity, the pull for shared electrons, increases across periods and decreases down each group.",
                 visual_type="electronegativity_trend",
                 key_takeaway="Electronegativity increases across periods and decreases down groups.",
                 latex_formula=r"\chi_{\mathrm{F}} = 3.98 \quad (\text{Most Electronegative})",
@@ -246,7 +246,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=3,
                 title="Atomic Radius: The Size Gradient",
-                narration="Atomic size follows an inverse trajectory. Atoms shrink across a period due to stronger nuclear pull, but expand down each group as brand new electron shells are added.",
+                narration="Conversely, atomic radius shrinks across periods due to nuclear pull, but expands down groups with new shells.",
                 visual_type="atomic_radius_trend",
                 key_takeaway="Atomic radius decreases left-to-right and increases top-to-bottom.",
                 latex_formula=r"r_{\mathrm{atom}} \propto \frac{n^2}{Z_{\mathrm{eff}}}",
@@ -255,7 +255,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=4,
                 title="Predicting Chemical Reactivity",
-                narration="These periodic trends allow chemists to predict how any element will bond and react, making Mendeleev's periodic table the ultimate predictive guide in all of modern science.",
+                narration="These predictable periodic trends allow chemists to accurately forecast how any element bonds and reacts.",
                 visual_type="periodic_summary",
                 key_takeaway="Periodic trends provide predictive power for all chemical interactions.",
                 latex_formula=r"\text{Position on Table} \implies \text{Reactivity \& Bonding}",
@@ -271,7 +271,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=1,
                 title="The Kinetic Nature of Matter",
-                narration="All substances in our physical universe exist in distinct states of matter: solid, liquid, or gas, determined by the kinetic energy of their constituent molecules.",
+                narration="Matter exists in three primary physical states: solid, liquid, and gas, governed by molecular kinetic energy.",
                 visual_type="matter_intro",
                 key_takeaway="Matter exists as solid, liquid, or gas depending on molecular kinetic energy.",
                 latex_formula=r"\overline{E_k} = \frac{3}{2} k_B T",
@@ -280,7 +280,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=2,
                 title="Solid Lattice to Fluid Liquid",
-                narration="In a solid, atoms are held firmly in a rigid crystal lattice, merely vibrating in place. Supplying heat increases thermal vibrations until the lattice melts into a fluid, flowing liquid.",
+                narration="In solids, particles vibrate in rigid lattices; adding thermal energy melts them into fluid liquids.",
                 visual_type="solid_liquid_phase",
                 key_takeaway="Adding heat breaks rigid crystal bonds, transitioning solids to liquids.",
                 latex_formula=r"\mathrm{Solid} + \Delta H_{\mathrm{fusion}} \rightarrow \mathrm{Liquid}",
@@ -289,7 +289,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=3,
                 title="Vaporization to High-Velocity Gas",
-                narration="Adding even more heat energy allows molecules to completely overcome intermolecular attractions, escaping rapidly into the gas phase where particles freely collide at high velocities.",
+                narration="Further heating vaporizes liquid into high-speed gas particles that move freely and collide chaotically.",
                 visual_type="liquid_gas_phase",
                 key_takeaway="Vaporization frees molecules into high-speed, chaotic gas collisions.",
                 latex_formula=r"\mathrm{Liquid} + \Delta H_{\mathrm{vap}} \rightarrow \mathrm{Gas}",
@@ -298,7 +298,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=4,
                 title="Phase Equilibrium and Conservation",
-                narration="Throughout every state change, molecular composition remains completely conserved. Temperature simply dictates whether forces of attraction or kinetic speeds govern the system.",
+                narration="Throughout every phase transition, chemical identity is conserved as temperature alters only intermolecular kinetic organization.",
                 visual_type="matter_summary",
                 key_takeaway="Phase changes alter physical organization while chemical identity remains conserved.",
                 latex_formula=r"\mathrm{H}_2\mathrm{O(s)} \rightleftharpoons \mathrm{H}_2\mathrm{O(l)} \rightleftharpoons \mathrm{H}_2\mathrm{O(g)}",
@@ -314,7 +314,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=1,
                 title="When Opposites Meet",
-                narration="Acids and bases represent opposite extremes of chemical reactivity. When mixed in stoichiometric balance, their aggressive properties neutralize each other into harmless, stable products.",
+                narration="Acids and bases represent opposite chemical extremes that neutralize one another when mixed in stoichiometric balance.",
                 visual_type="neutralization_intro",
                 key_takeaway="Neutralization occurs when acids and bases react to cancel each other out.",
                 latex_formula=r"\mathrm{Acid} + \mathrm{Base} \rightarrow \mathrm{Salt} + \mathrm{Water}",
@@ -323,7 +323,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=2,
                 title="The Fundamental Ionic Reaction",
-                narration="At the microscopic level, acidic hydrogen ions and basic hydroxide ions combine rapidly to form pure, stable water molecules, eliminating free protons from the solution.",
+                narration="At the microscopic level, acidic protons and alkaline hydroxide ions combine rapidly into pure water.",
                 visual_type="neutralization_reaction",
                 key_takeaway="Hydronium and hydroxide combine directly into water molecules.",
                 latex_formula=r"\mathrm{H}^+ + \mathrm{OH}^- \rightarrow \mathrm{H}_2\mathrm{O}",
@@ -332,7 +332,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=3,
                 title="Salt Formation and pH Shift",
-                narration="Meanwhile, the spectator counter-ions combine into a dissolved mineral salt. The solution's pH shifts dramatically from strong acid or base toward neutral seven.",
+                narration="Meanwhile, spectator ions combine to produce dissolved salt as the solution shifts toward neutral pH seven.",
                 visual_type="neutralization_indicator",
                 key_takeaway="Counter-ions form salt, while solution pH shifts toward neutral 7.",
                 latex_formula=r"\mathrm{HCl} + \mathrm{NaOH} \rightarrow \mathrm{NaCl} + \mathrm{H}_2\mathrm{O}",
@@ -341,7 +341,7 @@ TEMPLATES: Dict[SupportedTopic, VideoScript] = {
             Scene(
                 scene_id=4,
                 title="Titration and Analytical Precision",
-                narration="Chemists harness this reaction in titrations, using precise volumetric delivery and color indicators to measure the unknown concentration of acids and bases in medicine and industry.",
+                narration="Chemists employ neutralization reactions during volumetric titrations to determine unknown acid concentrations with high analytical precision.",
                 visual_type="neutralization_summary",
                 key_takeaway="Titration uses neutralization to accurately calculate chemical concentrations.",
                 latex_formula=r"M_1 V_1 = M_2 V_2 \implies \text{Equivalence Point}",

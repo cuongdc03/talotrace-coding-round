@@ -47,8 +47,20 @@ class ScriptGenerator:
             try:
                 gemini_script = await self.gemini_generator.generate_script(topic=topic, query=query)
                 if gemini_script:
-                    logger.info("Successfully generated script via Gemini LLM for %s", topic)
-                    return gemini_script, False
+                    total_words = sum(len(s.narration.split()) for s in gemini_script.scenes)
+                    if 60 <= total_words <= 85:
+                        logger.info(
+                            "Successfully validated Gemini LLM script for %s (%d words)",
+                            topic,
+                            total_words,
+                        )
+                        return gemini_script, False
+                    else:
+                        logger.warning(
+                            "Gemini script has %d words (target: 60-85 words for ~30s); falling back to 30s template for %s",
+                            total_words,
+                            topic,
+                        )
             except Exception as exc:
                 logger.warning("Gemini script generation attempt failed: %s", exc)
 

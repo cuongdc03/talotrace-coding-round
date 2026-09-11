@@ -1,0 +1,56 @@
+{
+  "job_id": "job_b197b7d4d807",
+  "query": "How do exothermic and endothermic reactions differ?",
+  "topic": "EXO_VS_ENDOTHERMIC",
+  "title": "Exothermic vs Endothermic Reactions: Energy Flows in Chemistry",
+  "duration_seconds": 29.0,
+  "file_size_bytes": 814056,
+  "video_path": "artifacts/videos/exo_vs_endothermic.mp4",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "title": "The Thermodynamics of Reactions",
+      "narration": "Chemical reactions constantly exchange heat energy with their surroundings, classified as either exothermic or endothermic.",
+      "visual_type": "energy_intro",
+      "key_takeaway": "Chemical reactions either release heat (exothermic) or absorb heat (endothermic).",
+      "latex_formula": "\\Delta H = H_{\\mathrm{products}} - H_{\\mathrm{reactants}}",
+      "duration_target_seconds": 7.5
+    },
+    {
+      "scene_id": 2,
+      "title": "Exothermic Reactions: Releasing Thermal Energy",
+      "narration": "Exothermic reactions release thermal energy because new bonds in the products are stronger than reactant bonds.",
+      "visual_type": "exothermic_profile",
+      "key_takeaway": "Exothermic: Products have lower energy than reactants; Delta H is negative.",
+      "latex_formula": "\\Delta H < 0 \\quad (\\text{Heat Released})",
+      "duration_target_seconds": 8.0
+    },
+    {
+      "scene_id": 3,
+      "title": "Endothermic Reactions: Absorbing Heat",
+      "narration": "Endothermic reactions absorb ambient heat from their environment, producing products that store greater chemical enthalpy.",
+      "visual_type": "endothermic_profile",
+      "key_takeaway": "Endothermic: Products have higher energy than reactants; Delta H is positive.",
+      "latex_formula": "\\Delta H > 0 \\quad (\\text{Heat Absorbed})",
+      "duration_target_seconds": 8.0
+    },
+    {
+      "scene_id": 4,
+      "title": "The Activation Energy Hill",
+      "narration": "Both reaction types require activation energy to climb the kinetic barrier before transforming into products.",
+      "visual_type": "energy_summary",
+      "key_takeaway": "Activation energy Ea is the kinetic threshold required to initiate reaction.",
+      "latex_formula": "k = A \\cdot e^{-\\frac{E_a}{RT}}",
+      "duration_target_seconds": 7.5
+    }
+  ],
+  "verification": {
+    "is_valid": true,
+    "duration": 29.0,
+    "size_bytes": 814056,
+    "has_video": true,
+    "has_audio": true,
+    "format": "mov,mp4,m4a,3gp,3g2,mj2"
+  },
+  "engine_used": "manim"
+}

@@ -15,6 +15,11 @@ from app.pipeline.video_assembler import VideoAssembler
         ("ph_scale", "PH_SCALE"),
         ("covalent_bonds", "COVALENT_BONDS"),
         ("ionic_vs_covalent", "IONIC_VS_COVALENT"),
+        ("atomic_structure", "ATOMIC_STRUCTURE"),
+        ("exo_vs_endothermic", "EXO_VS_ENDOTHERMIC"),
+        ("periodic_trends", "PERIODIC_TRENDS"),
+        ("states_of_matter", "STATES_OF_MATTER"),
+        ("acid_base_neutralization", "ACID_BASE_NEUTRALIZATION"),
     ],
 )
 async def test_sample_video_artifacts_validity(video_slug: str, expected_topic: str):
@@ -31,7 +36,7 @@ async def test_sample_video_artifacts_validity(video_slug: str, expected_topic: 
 
     assert manifest["topic"] == expected_topic
     assert len(manifest["scenes"]) >= 3
-    assert manifest["duration_seconds"] >= 8.0
+    assert manifest["duration_seconds"] >= 25.0
 
     # Probe artifact with ffprobe
     assembler = VideoAssembler()
@@ -39,4 +44,4 @@ async def test_sample_video_artifacts_validity(video_slug: str, expected_topic: 
     assert verification["is_valid"] is True
     assert verification["has_video"] is True
     assert verification["has_audio"] is True
-    assert verification["duration"] >= 8.0
+    assert verification["duration"] >= 25.0
