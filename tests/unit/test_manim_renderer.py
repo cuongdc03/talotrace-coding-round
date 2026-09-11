@@ -21,5 +21,5 @@ def test_manim_renderer_code_generation_all_8_topics():
     for code in generators:
         assert "class ChemistryScene(Scene):" in code
         assert "ImageMobject" in code
-        assert "self.camera.background_color = \"#0B0F19\"" in code
+        assert 'self.camera.background_color = "#0B0F19"' in code
         assert "self.play(" in code

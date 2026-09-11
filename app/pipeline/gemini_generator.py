@@ -26,13 +26,25 @@ Requirements:
 
 
 class GeminiScriptGenerator:
-    """Uses Google Gemini 2.5 Flash to generate structured educational scripts."""
+    """Uses Google Gemini (default: gemini-3.5-flash-lite) to generate structured educational scripts."""
 
-    def __init__(self, api_key: Optional[str] = None) -> None:
+    def __init__(self, api_key: Optional[str] = None, model: Optional[str] = None) -> None:
         if api_key is not None:
             self.api_key = api_key if api_key.strip() else None
         else:
             self.api_key = settings.GEMINI_API_KEY or os.environ.get("GEMINI_API_KEY")
+
+        raw_model = model or settings.GEMINI_MODEL or "gemini-3.5-flash-lite"
+        cleaned_model = raw_model.strip().lower()
+        # Map user-friendly shorthand aliases to valid Google GenAI API model identifiers
+        if cleaned_model in ("3.5-flash-lite", "gemini-3.5-flash-lite"):
+            self.api_model = "gemini-3.5-flash-lite"
+        elif cleaned_model in ("3-flash", "gemini-3-flash", "gemini-3-flash-preview"):
+            self.api_model = "gemini-3-flash-preview"
+        elif cleaned_model in ("2.5-flash", "gemini-2.5-flash"):
+            self.api_model = "gemini-2.5-flash"
+        else:
+            self.api_model = raw_model.strip()
 
         self._client: Optional[genai.Client] = None
         if self.api_key:
@@ -41,9 +53,7 @@ class GeminiScriptGenerator:
             except Exception as e:
                 logger.warning(f"Failed to initialize Gemini client: {e}")
 
-    async def generate_script(
-        self, topic: SupportedTopic, query: str
-    ) -> Optional[VideoScript]:
+    async def generate_script(self, topic: SupportedTopic, query: str) -> Optional[VideoScript]:
         """Generate a validated 30s VideoScript using Gemini LLM with structured schema output."""
         if not self._client:
             logger.info("Gemini API key not configured. Skipping LLM script generation.")
@@ -57,12 +67,12 @@ Ensure the topic is set to "{topic.value}".
 """
 
         try:
-            logger.info(f"Invoking Gemini LLM (gemini-2.5-flash) for query: '{query}'")
+            logger.info(f"Invoking Gemini LLM ({self.api_model}) for query: '{query}'")
             loop = asyncio.get_running_loop()
 
             def _call_gemini() -> str:
                 response = self._client.models.generate_content(
-                    model="gemini-2.5-flash",
+                    model=self.api_model,
                     contents=prompt,
                     config=types.GenerateContentConfig(
                         system_instruction=SYSTEM_PROMPT,

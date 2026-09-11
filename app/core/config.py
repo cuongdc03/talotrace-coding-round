@@ -31,6 +31,7 @@ class Settings(BaseSettings):
 
     # LLM & Generation
     GEMINI_API_KEY: str | None = None
+    GEMINI_MODEL: str = "gemini-3.5-flash-lite"
 
     # Audio & Video Engine Defaults
     TTS_VOICE: str = "en-US-GuyNeural"

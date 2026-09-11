@@ -45,7 +45,9 @@ class ScriptGenerator:
         """
         if llm_provider is None and self.gemini_generator:
             try:
-                gemini_script = await self.gemini_generator.generate_script(topic=topic, query=query)
+                gemini_script = await self.gemini_generator.generate_script(
+                    topic=topic, query=query
+                )
                 if gemini_script:
                     total_words = sum(len(s.narration.split()) for s in gemini_script.scenes)
                     if 60 <= total_words <= 85:

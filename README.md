@@ -13,7 +13,7 @@ Built as part of the **Growtrics AI Chemistry Video Request Service Challenge**.
    - Observable lifecycle state machine:
      `PENDING` $\to$ `VALIDATING` $\to$ `GENERATING_SCRIPT` $\to$ `SYNTHESIZING_AUDIO` $\to$ `RENDERING_VIDEO` $\to$ `VERIFYING_ARTIFACT` $\to$ `COMPLETED` (or `FAILED` with diagnostics).
 2. **Google Gemini LLM & Pydantic Guardrails**:
-   - Integrated with Google Gemini 2.5 Flash (`google-genai`) to generate structured 4-scene chemistry explainer storyboards with embedded LaTeX chemical equations and formulas.
+   - Integrated with Google Gemini 3.5 Flash Lite (`gemini-3.5-flash-lite`, configurable via `GEMINI_MODEL`) using `google-genai` SDK to generate structured 4-scene chemistry explainer storyboards with embedded LaTeX chemical equations and formulas.
    - Schema validation guardrails with deterministic fallbacks guarantee 100% reliability across repeated runs.
 3. **Manim 3Blue1Brown Mathematical Animations**:
    - Vector animations rendered with Manim for high conceptual clarity:

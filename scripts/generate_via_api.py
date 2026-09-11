@@ -76,7 +76,9 @@ async def run_client() -> None:
             print(f"[✓] FastAPI service is healthy: {health_resp.json()}")
         except Exception as e:
             print(f"[!] Failed to connect to FastAPI service at {API_BASE}: {e}")
-            print("    Please start the server: uv run --python .venv uvicorn app.main:app --port 8000")
+            print(
+                "    Please start the server: uv run --python .venv uvicorn app.main:app --port 8000"
+            )
             return
 
         for idx, item in enumerate(ALL_CONCEPTS, 1):
@@ -120,7 +122,9 @@ async def run_client() -> None:
                     raise RuntimeError(f"Job {job_id} failed: {err}")
 
             # 3. Stream & Download MP4 Video Artifact via REST API
-            print(f"    -> Downloading generated video artifact from /api/v1/videos/jobs/{job_id}/video ...")
+            print(
+                f"    -> Downloading generated video artifact from /api/v1/videos/jobs/{job_id}/video ..."
+            )
             async with client.stream("GET", f"/api/v1/videos/jobs/{job_id}/video") as stream_resp:
                 stream_resp.raise_for_status()
                 with open(target_mp4, "wb") as f:
@@ -148,21 +152,25 @@ async def run_client() -> None:
             size_mb = target_mp4.stat().st_size / (1024 * 1024)
             print(f"    [✓] Video saved: {target_mp4.name} ({duration:.2f}s, {size_mb:.2f} MB)")
 
-            results.append({
-                "concept": query,
-                "topic": topic,
-                "duration": f"{duration:.2f}s",
-                "size": f"{size_mb:.2f} MB",
-                "file": target_mp4.name,
-                "valid": status_data["metadata"].get("verification", {}).get("is_valid", True),
-            })
+            results.append(
+                {
+                    "concept": query,
+                    "topic": topic,
+                    "duration": f"{duration:.2f}s",
+                    "size": f"{size_mb:.2f} MB",
+                    "file": target_mp4.name,
+                    "valid": status_data["metadata"].get("verification", {}).get("is_valid", True),
+                }
+            )
 
     print("\n" + "=" * 80)
     print("ALL 8 EXPLAINER VIDEOS GENERATED & VERIFIED VIA FASTAPI")
     print("=" * 80)
     for r in results:
         print(f"- {r['concept']}")
-        print(f"  Topic: {r['topic']} | Duration: {r['duration']} | Size: {r['size']} | Valid: {r['valid']}")
+        print(
+            f"  Topic: {r['topic']} | Duration: {r['duration']} | Size: {r['size']} | Valid: {r['valid']}"
+        )
         print(f"  Artifact: artifacts/videos/{r['file']}")
         print("-" * 80)
 

@@ -49,14 +49,20 @@ class LatexRenderer:
         try:
             self._render(math_str, output_path, color=color, fontsize=fontsize, dpi=dpi)
         except Exception as e:
-            logger.warning(f"Mathtext render failed for '{formula}': {e}. Using fallback plain text.")
+            logger.warning(
+                f"Mathtext render failed for '{formula}': {e}. Using fallback plain text."
+            )
             # Fallback to plain text rendering without math mode
-            clean_plain = formula_clean.replace("$", "").replace("\\mathrm", "").replace("\\text", "")
+            clean_plain = (
+                formula_clean.replace("$", "").replace("\\mathrm", "").replace("\\text", "")
+            )
             self._render_plain(clean_plain, output_path, color=color, fontsize=fontsize, dpi=dpi)
 
         return output_path
 
-    def _render(self, math_str: str, output_path: Path, color: str, fontsize: int, dpi: int) -> None:
+    def _render(
+        self, math_str: str, output_path: Path, color: str, fontsize: int, dpi: int
+    ) -> None:
         fig, ax = plt.subplots(figsize=(7, 1.6))
         fig.patch.set_alpha(0.0)
         ax.patch.set_alpha(0.0)
