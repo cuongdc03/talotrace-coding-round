@@ -3,9 +3,9 @@
   "topic": "PH_SCALE",
   "title": "How the pH Scale Works: Acids, Bases, and Ions",
   "overview": "Explore the pH scale from 0 to 14, discovering how hydrogen ion concentration determines whether a substance is acidic, neutral, or alkaline.",
-  "duration_seconds": 34.354062,
+  "duration_seconds": 22.041667,
   "video_path": "artifacts/videos/ph_scale.mp4",
-  "file_size_bytes": 863438,
+  "file_size_bytes": 766751,
   "fallback_used": false,
   "scenes": [
     {
@@ -35,8 +35,8 @@
   ],
   "verification": {
     "is_valid": true,
-    "duration": 34.354062,
-    "size_bytes": 863438,
+    "duration": 22.041667,
+    "size_bytes": 766751,
     "has_video": true,
     "has_audio": true,
     "format": "mov,mp4,m4a,3gp,3g2,mj2"

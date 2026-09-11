@@ -49,6 +49,9 @@ artifacts/frames/
 artifacts/audio/
 artifacts/tmp/
 artifacts/videos/job_*.mp4
+artifacts/videos/*concat*
+artifacts/videos/*combined*
+media/
 
 # OS
 .DS_Store

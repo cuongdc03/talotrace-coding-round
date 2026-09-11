@@ -3,9 +3,9 @@
   "topic": "COVALENT_BONDS",
   "title": "Why Atoms Form Covalent Bonds",
   "overview": "Understand how nonmetal atoms achieve electronic stability by sharing valence electron pairs to complete their outer shells.",
-  "duration_seconds": 35.874667,
+  "duration_seconds": 9.5,
   "video_path": "artifacts/videos/covalent_bonds.mp4",
-  "file_size_bytes": 902613,
+  "file_size_bytes": 475783,
   "fallback_used": false,
   "scenes": [
     {
@@ -35,8 +35,8 @@
   ],
   "verification": {
     "is_valid": true,
-    "duration": 35.874667,
-    "size_bytes": 902613,
+    "duration": 9.5,
+    "size_bytes": 475783,
     "has_video": true,
     "has_audio": true,
     "format": "mov,mp4,m4a,3gp,3g2,mj2"

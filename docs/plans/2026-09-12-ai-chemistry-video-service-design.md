@@ -131,8 +131,9 @@ Generative AI outputs vary across runs. To guarantee reliability:
        scene_id: int
        title: str
        narration: str
-       visual_type: str # e.g. "ph_spectrum", "electron_sharing", "lattice_comparison"
+       visual_type: str  # e.g. "ph_spectrum", "electron_sharing", "lattice_comparison"
        key_takeaway: str
+
 
    class VideoScript(BaseModel):
        topic: str
@@ -206,7 +207,7 @@ The system uses a pluggable `ConceptRegistry`:
 ```python
 class ConceptDefinition:
     key: str
-    subject: str # e.g. "chemistry", "physics", "biology"
+    subject: str  # e.g. "chemistry", "physics", "biology"
     canonical_name: str
     keywords: List[str]
     template_script: VideoScript

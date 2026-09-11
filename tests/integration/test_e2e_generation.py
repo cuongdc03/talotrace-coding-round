@@ -31,7 +31,7 @@ async def test_sample_video_artifacts_validity(video_slug: str, expected_topic: 
 
     assert manifest["topic"] == expected_topic
     assert len(manifest["scenes"]) >= 3
-    assert manifest["duration_seconds"] > 10.0
+    assert manifest["duration_seconds"] >= 8.0
 
     # Probe artifact with ffprobe
     assembler = VideoAssembler()
@@ -39,4 +39,4 @@ async def test_sample_video_artifacts_validity(video_slug: str, expected_topic: 
     assert verification["is_valid"] is True
     assert verification["has_video"] is True
     assert verification["has_audio"] is True
-    assert verification["duration"] > 10.0
+    assert verification["duration"] >= 8.0

@@ -3,9 +3,9 @@
   "topic": "IONIC_VS_COVALENT",
   "title": "Ionic vs Covalent Bonding: The Essential Differences",
   "overview": "Compare the two fundamental chemical bonding mechanisms: electron transfer forming ionic crystal lattices versus electron sharing forming covalent molecules.",
-  "duration_seconds": 46.378667,
+  "duration_seconds": 10.458008,
   "video_path": "artifacts/videos/ionic_vs_covalent.mp4",
-  "file_size_bytes": 1292423,
+  "file_size_bytes": 421200,
   "fallback_used": false,
   "scenes": [
     {
@@ -43,8 +43,8 @@
   ],
   "verification": {
     "is_valid": true,
-    "duration": 46.378667,
-    "size_bytes": 1292423,
+    "duration": 10.458008,
+    "size_bytes": 421200,
     "has_video": true,
     "has_audio": true,
     "format": "mov,mp4,m4a,3gp,3g2,mj2"
