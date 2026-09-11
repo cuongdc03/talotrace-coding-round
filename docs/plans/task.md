@@ -19,5 +19,7 @@
 | 17 | Push Final Codebase and Video Deliverables to GitHub Repo | completed |
 | 18 | Add Reviewer Reproduction Setup (.env.example, Makefile, reproduce.sh, README) | completed |
 | 19 | Regenerate Clean Submission Zip and Push to GitHub | completed |
+| 20 | Support atom vs ion queries & universal 3Blue1Brown Manim engine for general STEM | completed |
+
 
 

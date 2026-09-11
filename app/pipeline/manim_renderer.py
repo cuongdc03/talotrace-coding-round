@@ -570,6 +570,64 @@ class ChemistryScene(Scene):
         self.wait({final_wait:.1f})
 """
 
+    def _generate_stem_explainer_manim_code(self, duration: float, eq_png: Path) -> str:
+        """Generate universal 3Blue1Brown-style vector animation for general STEM queries."""
+        final_wait = max(2.5, duration - 21.0)
+        return f"""
+from manim import *
+
+class ChemistryScene(Scene):
+    def construct(self):
+        self.camera.background_color = "#0B0F19"
+
+        title = Text("Scientific Exploration & Core Principles", font_size=34, color="#38BDF8")
+        title.to_edge(UP, buff=0.5)
+        self.play(Write(title), run_time=1.5)
+
+        # Coordinate axes & glowing geometry
+        grid = NumberPlane(
+            x_range=[-5, 5, 1],
+            y_range=[-3, 3, 1],
+            background_line_style={{"stroke_color": "#1E293B", "stroke_width": 1}},
+            axis_config={{"color": "#475569", "stroke_width": 2}},
+        ).shift(DOWN * 0.2)
+        self.play(Create(grid), run_time=2.0)
+
+        # Dynamic interacting particles and vector curves
+        core_orb = Circle(radius=1.2, color="#38BDF8", stroke_width=3).shift(DOWN * 0.2)
+        dot_a = Dot(point=LEFT * 2.5 + DOWN * 0.2, radius=0.15, color="#F43F5E")
+        dot_b = Dot(point=RIGHT * 2.5 + DOWN * 0.2, radius=0.15, color="#10B981")
+        arrow_a = Arrow(start=dot_a.get_center(), end=core_orb.get_left(), color="#F43F5E", buff=0.1)
+        arrow_b = Arrow(start=dot_b.get_center(), end=core_orb.get_right(), color="#10B981", buff=0.1)
+
+        txt_a = Text("State A", font_size=18, color="#F43F5E").next_to(dot_a, UP, buff=0.2)
+        txt_b = Text("State B", font_size=18, color="#10B981").next_to(dot_b, UP, buff=0.2)
+
+        self.play(FadeIn(core_orb), FadeIn(dot_a), FadeIn(dot_b), FadeIn(txt_a), FadeIn(txt_b), run_time=3.0)
+        self.play(GrowArrow(arrow_a), GrowArrow(arrow_b), run_time=2.0)
+        self.wait(1.5)
+
+        # Particle convergence & energy transformation
+        self.play(
+            dot_a.animate.move_to(core_orb.get_center() + LEFT * 0.4),
+            dot_b.animate.move_to(core_orb.get_center() + RIGHT * 0.4),
+            FadeOut(arrow_a), FadeOut(arrow_b),
+            core_orb.animate.set_color("#FACC15").scale(1.1),
+            run_time=3.0,
+        )
+        self.wait(2.0)
+
+        # LaTeX formula card callout
+        eq_mob = ImageMobject(r"{eq_png}").scale(0.85).to_edge(DOWN, buff=0.3)
+        self.play(FadeIn(eq_mob), run_time=2.0)
+        self.wait(2.5)
+
+        takeaway = Text("Natural laws and equilibrium govern transformations across all matter", font_size=18, color="#F8FAFC")
+        takeaway.to_edge(DOWN, buff=0.4)
+        self.play(FadeIn(takeaway), run_time=2.0)
+        self.wait({final_wait:.1f})
+"""
+
     async def render_topic_video(
         self,
         topic: SupportedTopic,
@@ -618,8 +676,8 @@ class ChemistryScene(Scene):
         elif topic == SupportedTopic.ACID_BASE_NEUTRALIZATION:
             code = self._generate_acid_base_neutralization_manim_code(duration, eq_png)
         else:
-            logger.info("No dedicated Manim scene for %s; using standard visual engine", topic)
-            return None
+            logger.info("Rendering universal 3Blue1Brown-style vector animation for %s", topic)
+            code = self._generate_stem_explainer_manim_code(duration, eq_png)
 
         with tempfile.TemporaryDirectory() as tmp_dir:
             tmp_path = Path(tmp_dir)

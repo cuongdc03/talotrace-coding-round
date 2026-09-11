@@ -16,6 +16,7 @@ def test_manim_renderer_code_generation_all_8_topics():
         renderer._generate_periodic_trends_manim_code(30.0, dummy_eq),
         renderer._generate_states_of_matter_manim_code(30.0, dummy_eq),
         renderer._generate_acid_base_neutralization_manim_code(30.0, dummy_eq),
+        renderer._generate_stem_explainer_manim_code(30.0, dummy_eq),
     ]
 
     for code in generators:

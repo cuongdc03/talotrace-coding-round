@@ -45,6 +45,10 @@ def test_classify_atomic_structure_queries():
         classifier.classify("Explain electron shells and Bohr model")
         == SupportedTopic.ATOMIC_STRUCTURE
     )
+    assert (
+        classifier.classify("What is the difference between an atom and an ion?")
+        == SupportedTopic.ATOMIC_STRUCTURE
+    )
 
 
 def test_classify_exo_vs_endothermic_queries():

@@ -49,6 +49,16 @@ class ConceptClassifier:
                 ],
             ),
             (
+                SupportedTopic.PERIODIC_TRENDS,
+                [
+                    re.compile(r"periodic\s+table", re.IGNORECASE),
+                    re.compile(r"periodic\s+trend", re.IGNORECASE),
+                    re.compile(r"electronegativity", re.IGNORECASE),
+                    re.compile(r"atomic\s+radius", re.IGNORECASE),
+                    re.compile(r"ionization\s+energy", re.IGNORECASE),
+                ],
+            ),
+            (
                 SupportedTopic.ATOMIC_STRUCTURE,
                 [
                     re.compile(r"atomic\s+structure", re.IGNORECASE),
@@ -57,6 +67,10 @@ class ConceptClassifier:
                     re.compile(r"electron\s+shell", re.IGNORECASE),
                     re.compile(r"bohr(\s+model)?", re.IGNORECASE),
                     re.compile(r"protons?.*neutrons?", re.IGNORECASE),
+                    re.compile(r"atom.*(vs|versus|diff|and).*ion", re.IGNORECASE),
+                    re.compile(r"ion.*(vs|versus|diff|and).*atom", re.IGNORECASE),
+                    re.compile(r"\b(ion|ions|cation|cations|anion|anions)\b", re.IGNORECASE),
+                    re.compile(r"\batoms?\b", re.IGNORECASE),
                 ],
             ),
             (
@@ -67,16 +81,6 @@ class ConceptClassifier:
                     re.compile(r"activation\s+energy", re.IGNORECASE),
                     re.compile(r"energy\s+profile", re.IGNORECASE),
                     re.compile(r"heat\s+of\s+reaction", re.IGNORECASE),
-                ],
-            ),
-            (
-                SupportedTopic.PERIODIC_TRENDS,
-                [
-                    re.compile(r"periodic\s+table", re.IGNORECASE),
-                    re.compile(r"periodic\s+trend", re.IGNORECASE),
-                    re.compile(r"electronegativity", re.IGNORECASE),
-                    re.compile(r"atomic\s+radius", re.IGNORECASE),
-                    re.compile(r"ionization\s+energy", re.IGNORECASE),
                 ],
             ),
             (
